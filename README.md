@@ -1,6 +1,6 @@
 # css-snippets
 
-This stuff convenient for me
+This stuff is convenient for me
 
 ## package
 `lodash`, `webpack`
