@@ -1,26 +1,29 @@
-class DragScroll extends HTMLElement {
+class DragScrollElement extends HTMLElement {
     constructor() {
         super()
-        this.style.cursor = 'grab'
+    }
+
+    connectedCallback() {
         this.addEventListener('mousedown', function (e) {
-            this.pushed = true
+            this.started = true
             this.lastClientY = e.clientY
             this.lastClientX = e.clientX
             e.preventDefault()
-        })
+        });
         this.addEventListener('mousemove', function (e) {
-            if (this.pushed) {
+            if (this.started) {
                 this.style.cursor = 'grabbing'
                 this.scrollLeft -= (-this.lastClientX + (this.lastClientX = e.clientX))
                 this.scrollTop -= (-this.lastClientY + (this.lastClientY = e.clientY))
             }
-        })
-        let target = this
-        window.addEventListener('mouseup', () => {
-            target.pushed = false
-            target.style.cursor = 'grab'
-        })
+        });
+        (function (target) {
+            window.addEventListener('mouseup', () => {
+                target.started = false
+                target.style.cursor = 'grab'
+            })
+        })(this);
     }
 }
 
-window.customElements.define('drag-scroll', DragScroll)
+window.customElements.define('drag-scroll', DragScrollElement)
