@@ -9,7 +9,10 @@
         .scroll {
             display: flex;
             overflow: auto;
-            width: 720px;
+            width: 500px;
+        }
+        .scroll::-webkit-scrollbar {
+            display: none;
         }
     </style>
 </head>
@@ -27,5 +30,25 @@
     </drag-scroll>
 </div>
 <script src="scroll.js"></script>
+<script>
+    let target = document.querySelector('.scroll')
+    let width = 500
+    let length = target.querySelectorAll('img').length
+    let i = 0
+    let increase = 1
+    setInterval(() => {
+        target.scrollTo({
+            top: 0,
+            left: width * i,
+            behavior: 'smooth'
+        })
+        if (i >= length - 1) {
+            increase = -1
+        } else if (i <= 0) {
+            increase = 1
+        }
+        i += increase
+    }, 1000);
+</script>
 </body>
 </html>
