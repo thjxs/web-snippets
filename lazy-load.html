@@ -32,10 +32,16 @@
 function rgbToHex(r,g,b) {
     return ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0')
 }
+function hexColor(c) {
+    if (c < 256) {
+        return Math.abs(c).toString(16)
+    }
+    return 0
+}
 function randomColor() {
     let min = 0;
     let max = 255;
-    return rgbToHex(randomNumber(max, min), randomNumber(max, min), randomNumber(max, min))
+    return `#${hexColor(randomNumber(max, min))}${hexColor(randomNumber(max, min))}${hexColor(randomNumber(max, min))}`
 }
 
 function createCanvas() {
@@ -43,7 +49,7 @@ function createCanvas() {
     canvas.height = 200
     canvas.width = 200
     let contex = canvas.getContext('2d')
-    contex.fillStyle = `#${randomColor()}`
+    contex.fillStyle = randomColor()
     contex.fillRect(0, 0, 200, 200)
     return canvas
 }
