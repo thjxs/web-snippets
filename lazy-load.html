@@ -28,6 +28,7 @@
 <main>
 </main>
 <script src="/random.js"></script>
+<script src="/index.js"></script>
 <script>
 function rgbToHex(r,g,b) {
     return ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0')
@@ -38,7 +39,7 @@ function hexColor(c) {
     }
     return '00'
 }
-function randomColor() {
+function CustomRandomColor() {
     let min = 0;
     let max = 255;
     return `#${hexColor(randomNumber(max, min))}${hexColor(randomNumber(max, min))}${hexColor(randomNumber(max, min))}`
