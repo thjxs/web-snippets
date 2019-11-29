@@ -34,9 +34,9 @@ function rgbToHex(r,g,b) {
 }
 function hexColor(c) {
     if (c < 256) {
-        return Math.abs(c).toString(16)
+        return Math.abs(c).toString(16).padStart(2, '0')
     }
-    return 0
+    return '00'
 }
 function randomColor() {
     let min = 0;
