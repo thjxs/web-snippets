@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lazy-load</title>
+    <style>
+        main {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -moz-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            -o-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<main>
+</main>
+<script src="/random.js"></script>
+<script>
+function rgbToHex(r,g,b) {
+    return ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0')
+}
+function randomColor() {
+    let min = 0;
+    let max = 255;
+    return rgbToHex(randomNumber(max, min), randomNumber(max, min), randomNumber(max, min))
+}
+
+function createCanvas() {
+    let canvas = document.createElement('canvas')
+    canvas.height = 200
+    canvas.width = 200
+    let contex = canvas.getContext('2d')
+    contex.fillStyle = `#${randomColor()}`
+    contex.fillRect(0, 0, 200, 200)
+    return canvas
+}
+(function() {
+    let io = new IntersectionObserver((entries) => {
+        entries.forEach(item => {
+            if (item.intersectionRatio <= 0) {
+                return
+            }
+            const {target} = item
+            target.appendChild(createCanvas())
+        })
+    }, {
+        threshold: [0.01]
+    })
+    let main = document.querySelector('main')
+    for (let i = 0; i < 105; i += 1) {
+        let div = document.createElement('div')
+        main.appendChild(div)
+        io.observe(div)
+    }
+})()
+</script>
+</body>
+</html>
