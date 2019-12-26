@@ -30,9 +30,30 @@
             color: #818078;
             background-color: #fcfcfa;
         }
+        .head-hr {
+            color: #818078;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            padding: 0 28px 28px;
+            outline: 0;
+            border-bottom: 2px solid currentColor;
+        }
+        .head-hr::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            display: inline-block;
+            background-color: #111111;
+            width: 2em;
+            height: 4px;
+        }
     </style>
 </head>
 <body>
 <hr data-content="center-text">
+<div class="head-hr">
+    标题
+</div>
 </body>
 </html>
