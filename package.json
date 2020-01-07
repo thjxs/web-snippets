@@ -5,7 +5,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
-    "randomcolor": "^0.5.4"
+    "randomcolor": "^0.5.4",
+    "websocket": "^1.0.31"
   },
   "devDependencies": {
     "webpack": "^4.41.2",
