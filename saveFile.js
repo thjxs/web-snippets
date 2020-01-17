@@ -1,10 +1,15 @@
 (async function start () {
     await navigator.serviceWorker.register('/serviceWorker.js')
     await navigator.serviceWorker.ready
-    const a = document.createElement('a');
-    a.href = '/tmp.png';
-    document.body.appendChild(a);
-    a.click();
+    const button = document.createElement('button')
+    button.addEventListener('click', function() {
+        const a = document.createElement('a');
+        a.href = '/tmp.png';
+        document.body.appendChild(a);
+        a.click();
+    })
+    button.innerText = 'download'
+    document.body.appendChild(button)
 })();
 
 async function handleFile(stream) {
