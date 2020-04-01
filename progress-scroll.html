@@ -29,7 +29,7 @@
     indicator.style.width = '0'
     indicator.style.background = 'rgb(242,124,194)'
     document.addEventListener('scroll', (e) => {
-        let h = document.body.clientHeight
+        let h = document.documentElement.scrollHeight
         let ih = window.innerHeight
         let oh = h - ih
         let rate = window.pageYOffset / oh
