@@ -32,12 +32,12 @@
         let width = 0
         let t = setInterval(() => {
             width += 1
-            span.style.width = width + "%"
-            if (width === 100) {
+            span.style.width = (width / 10) + "%"
+            if (width === 1000) {
                 span.style.backgroundColor = 'green'
                 clearInterval(t)
             }
-        }, 50);
+        }, 10);
     </script>
 </body>
 </html>
