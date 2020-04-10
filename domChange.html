@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom change</title>
+</head>
+<body>
+    <script>
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+            const observer = new MutationObserver(function (mutationsList) {
+                console.log(mutationsList);
+
+                const oscillator = audioCtx.createOscillator()
+
+                oscillator.connect(audioCtx.destination)
+                oscillator.type = "sine"
+                oscillator.frequency.setValueAtTime(
+                    Math.log(mutationsList.length + 5) * 880,
+                    audioCtx.currentTime,
+                )
+
+                oscillator.start()
+                oscillator.stop(audioCtx.currentTime + 0.01)
+            })
+
+            observer.observe(document, {
+                attributes: true,
+                childList: true,
+                subtree: true,
+                characterData: true,
+            })
+    </script>
+    <script>
+        function createP() {
+            let p = document.createElement('p')
+            p.innerText = 'hello'
+            document.body.appendChild(p)
+        }
+        function sleep(i) {
+            return new Promise((r, j) => {
+                setTimeout(() => {
+                    r()
+                }, i*50);
+            })
+        }
+        async function c() {
+            for (let i = 0; i < 12; i++) {
+                await sleep(i)
+                createP()
+            }
+        }
+        c()
+    </script>
+</body>
+</html>
