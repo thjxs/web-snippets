@@ -1,31 +1,31 @@
 img {
-    max-width: 240px;
+  max-width: 240px;
 }
 
 img-filter {
-    display: flex;
-    padding: 8px;
-    margin: 12px;
-    border: 1px solid #ccc;
+  display: flex;
+  padding: 8px;
+  margin: 12px;
+  border: 1px solid #ccc;
 }
 
 button {
-    margin: 5px;
-    max-width: 8rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  margin: 5px;
+  max-width: 8rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .fdc {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .flex-wrapper {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }

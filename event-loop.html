@@ -1,94 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event loop</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        let w = 0;
-        let b1 = (function () {
-            let d1 = document.createElement('div')
-            let d2 = document.createElement('div')
-            let b = document.createElement('button')
-            let timeS = Date.now()
-            b.addEventListener('click', () => {
-                timeS = Date.now()
-                d1.innerText = `tart at: ${timeS}`
-                setTimeout(() => {
-                    d2.innerText = `delay ${Date.now() - timeS}`
-                    console.log(w++)
-                }, 100);
-            })
-            b.innerText = 'fresh'
-            d1.innerText = `start at: ${timeS}`
-            setTimeout(() => {
-                d2.innerText = `delay ${Date.now() - timeS}`
-                console.log(w++)
-            }, 100);
-            document.body.appendChild(d1)
-            document.body.appendChild(d2)
-            document.body.appendChild(b)
-            return b
-
-        })();
-        let b2 = (function () {
-            let d1 = document.createElement('div')
-            let d2 = document.createElement('div')
-            let b = document.createElement('button')
-            let timeS = Date.now()
-            b.addEventListener('click', () => {
-                timeS = Date.now()
-                d1.innerText = `tart at: ${timeS}`
-                setTimeout(() => {
-                    d2.innerText = `delay ${Date.now() - timeS}`
-                    console.log(w++)
-                }, 100);
-                let p = new Promise((resolve, reject) => {
-                    resolve()
-                })
-                p.then(() => {
-                    let c = Date.now()
-                    while (Date.now() - c < 200) {
-                        //
-                    }
-                })
-            })
-            b.innerText = 'fresh'
-            d1.innerText = `start at: ${timeS}`
-            setTimeout(() => {
-                d2.innerText = `delay ${Date.now() - timeS}`
-                console.log(w++)
-            }, 100);
-            let p = new Promise((resolve, reject) => {
-                resolve()
-            })
-            p.then(() => {
-                let c = Date.now()
-                while (Date.now() - c < 200) {
-                    //
-                }
-            })
-            document.body.appendChild(d1)
-            document.body.appendChild(d2)
-            document.body.appendChild(b)
-            return b
-        })();
-        (function (b1, b2) {
-            let b = document.createElement('button')
-            b.addEventListener('click', () => {
-                if (Date.now() % 2) {
-                    b1.click()
-                    b2.click()
-                } else {
-                    b2.click()
-                    b1.click()
-                }
-            })
-            b.innerText = 'click'
-            document.body.appendChild(b)
-        })(b1, b2);
+      let w = 0;
+      let b1 = (function () {
+        let d1 = document.createElement("div");
+        let d2 = document.createElement("div");
+        let b = document.createElement("button");
+        let timeS = Date.now();
+        b.addEventListener("click", () => {
+          timeS = Date.now();
+          d1.innerText = `tart at: ${timeS}`;
+          setTimeout(() => {
+            d2.innerText = `delay ${Date.now() - timeS}`;
+            console.log(w++);
+          }, 100);
+        });
+        b.innerText = "fresh";
+        d1.innerText = `start at: ${timeS}`;
+        setTimeout(() => {
+          d2.innerText = `delay ${Date.now() - timeS}`;
+          console.log(w++);
+        }, 100);
+        document.body.appendChild(d1);
+        document.body.appendChild(d2);
+        document.body.appendChild(b);
+        return b;
+      })();
+      let b2 = (function () {
+        let d1 = document.createElement("div");
+        let d2 = document.createElement("div");
+        let b = document.createElement("button");
+        let timeS = Date.now();
+        b.addEventListener("click", () => {
+          timeS = Date.now();
+          d1.innerText = `tart at: ${timeS}`;
+          setTimeout(() => {
+            d2.innerText = `delay ${Date.now() - timeS}`;
+            console.log(w++);
+          }, 100);
+          let p = new Promise((resolve, reject) => {
+            resolve();
+          });
+          p.then(() => {
+            let c = Date.now();
+            while (Date.now() - c < 200) {
+              //
+            }
+          });
+        });
+        b.innerText = "fresh";
+        d1.innerText = `start at: ${timeS}`;
+        setTimeout(() => {
+          d2.innerText = `delay ${Date.now() - timeS}`;
+          console.log(w++);
+        }, 100);
+        let p = new Promise((resolve, reject) => {
+          resolve();
+        });
+        p.then(() => {
+          let c = Date.now();
+          while (Date.now() - c < 200) {
+            //
+          }
+        });
+        document.body.appendChild(d1);
+        document.body.appendChild(d2);
+        document.body.appendChild(b);
+        return b;
+      })();
+      (function (b1, b2) {
+        let b = document.createElement("button");
+        b.addEventListener("click", () => {
+          if (Date.now() % 2) {
+            b1.click();
+            b2.click();
+          } else {
+            b2.click();
+            b1.click();
+          }
+        });
+        b.innerText = "click";
+        document.body.appendChild(b);
+      })(b1, b2);
     </script>
-</body>
+  </body>
 </html>

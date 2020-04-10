@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Filter</title>
-    <link rel="stylesheet" href="filter.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="filter.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <script src="filter.js"></script>
     <script src="index.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        const filters = {
-            blur: ['0', '4px', '8px'],
-            brightness: ['0', '50%', '1', '200%'],
-            contrast: ['0', '56%', '1', '200%'],
-            dropShadow: ['30px 10px 4px #ccc', '0 -6mm 4mm rgb(23, 43, 33)'],
-            grayscale: ['0', '.7', '1'],
-            hueRotate: ['0', '90deg', '-0.25turn', '3.14rad'],
-            invert: ['0', '0.3', '50%', '70%', '1'],
-            opacity: ['1', '80%', '50%', '0.2', '0'],
-            saturate: ['1', '4', '50%', '0'],
-            sepia: ['0', '0.2', '60%', '1']
+      const filters = {
+        blur: ["0", "4px", "8px"],
+        brightness: ["0", "50%", "1", "200%"],
+        contrast: ["0", "56%", "1", "200%"],
+        dropShadow: ["30px 10px 4px #ccc", "0 -6mm 4mm rgb(23, 43, 33)"],
+        grayscale: ["0", ".7", "1"],
+        hueRotate: ["0", "90deg", "-0.25turn", "3.14rad"],
+        invert: ["0", "0.3", "50%", "70%", "1"],
+        opacity: ["1", "80%", "50%", "0.2", "0"],
+        saturate: ["1", "4", "50%", "0"],
+        sepia: ["0", "0.2", "60%", "1"],
+      };
+      const div = document.createElement("div");
+      div.classList.add("flex-wrapper");
+      for (const item in filters) {
+        let role = _.kebabCase(item);
+        const imgFilter = document.createElement("img-filter");
+        const img = document.createElement("img");
+        const actionArea = document.createElement("div");
+        actionArea.classList.add("flex");
+        actionArea.classList.add("fdc");
+        img.src = "tmp.png";
+        imgFilter.appendChild(img);
+        imgFilter.setAttribute("role", role);
+        for (let b of filters[item]) {
+          const button = document.createElement("button");
+          button.setAttribute(role, b);
+          button.setAttribute("title", `${item}(${b})`);
+          button.innerText = `${item}(${b})`;
+          actionArea.appendChild(button);
         }
-        const div = document.createElement('div')
-        div.classList.add('flex-wrapper')
-        for (const item in filters) {
-            let role = _.kebabCase(item)
-            const imgFilter = document.createElement('img-filter')
-            const img = document.createElement('img')
-            const actionArea = document.createElement('div')
-            actionArea.classList.add('flex')
-            actionArea.classList.add('fdc')
-            img.src = 'tmp.png'
-            imgFilter.appendChild(img)
-            imgFilter.setAttribute('role', role)
-            for (let b of filters[item]) {
-                const button = document.createElement('button')
-                button.setAttribute(role, b)
-                button.setAttribute('title', `${item}(${b})`)
-                button.innerText = `${item}(${b})`
-                actionArea.appendChild(button)
-            }
-            imgFilter.appendChild(actionArea)
-            div.appendChild(imgFilter)
-        }
-        document.body.appendChild(div)
+        imgFilter.appendChild(actionArea);
+        div.appendChild(imgFilter);
+      }
+      document.body.appendChild(div);
     </script>
-</body>
+  </body>
 </html>

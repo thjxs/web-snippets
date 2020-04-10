@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Add-on</title>
     <style>
-    .input-add-on {
+      .input-add-on {
         width: 420px;
         box-sizing: border-box;
         padding: 8px;
         display: flex;
-    }
-    .input-add-on-field {
+      }
+      .input-add-on-field {
         flex: 1;
-    }
-    .input-add-on-field:first-child,
-    .input-add-on-item:first-child {
+      }
+      .input-add-on-field:first-child,
+      .input-add-on-item:first-child {
         border-radius: 2px 0 0 2px;
-    }
-    .input-add-on-field:last-child,
-    .input-add-on-item:last-child {
+      }
+      .input-add-on-field:last-child,
+      .input-add-on-item:last-child {
         border-radius: 0 2px 2px 0;
-    }
-    .input-add-on-field,
-    .input-add-on-item {
+      }
+      .input-add-on-field,
+      .input-add-on-item {
         border: 1px solid #111;
         padding: 0.5em 0.75em;
-    }
-    .input-add-on-field:not(:first-child) {
+      }
+      .input-add-on-field:not(:first-child) {
         border-left: 0;
-    }
-    .input-add-on-field:not(:last-child) {
+      }
+      .input-add-on-field:not(:last-child) {
         border-right: 0;
-    }
+      }
     </style>
-</head>
-<body>
-<div class="input-add-on">
-    <input type="text" class="input-add-on-field">
-    <button class="input-add-on-item">Append</button>
-</div>
-<div class="input-add-on">
-    <button class="input-add-on-item">Prepend</button>
-    <input type="text" class="input-add-on-field">
-</div>
-<div class="input-add-on">
-    <button class="input-add-on-item">Both</button>
-    <input type="text" class="input-add-on-field">
-    <button class="input-add-on-item">Both</button>
-</div>
-</body>
+  </head>
+  <body>
+    <div class="input-add-on">
+      <input type="text" class="input-add-on-field" />
+      <button class="input-add-on-item">Append</button>
+    </div>
+    <div class="input-add-on">
+      <button class="input-add-on-item">Prepend</button>
+      <input type="text" class="input-add-on-field" />
+    </div>
+    <div class="input-add-on">
+      <button class="input-add-on-item">Both</button>
+      <input type="text" class="input-add-on-field" />
+      <button class="input-add-on-item">Both</button>
+    </div>
+  </body>
 </html>

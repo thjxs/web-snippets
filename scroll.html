@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Scroll</title>
     <style>
-        .scroll {
-            display: flex;
-            overflow: auto;
-            width: 500px;
-        }
-        .scroll::-webkit-scrollbar {
-            display: none;
-        }
+      .scroll {
+        display: flex;
+        overflow: auto;
+        width: 500px;
+      }
+      .scroll::-webkit-scrollbar {
+        display: none;
+      }
     </style>
-</head>
-<body>
-<div class="container">
-    <drag-scroll class="scroll">
-        <img src="tmp.png" alt="">
-        <img src="tmp.png" alt="">
-        <img src="tmp.png" alt="">
-        <img src="tmp.png" alt="">
-        <img src="tmp.png" alt="">
-        <img src="tmp.png" alt="">
-        <img src="tmp.png" alt="">
-        <img src="tmp.png" alt="">
-    </drag-scroll>
-</div>
-<script src="scroll.js"></script>
-<script>
-    let target = document.querySelector('.scroll')
-    let width = 500
-    let length = target.querySelectorAll('img').length
-    let i = 0
-    let increase = 1
-    setInterval(() => {
+  </head>
+  <body>
+    <div class="container">
+      <drag-scroll class="scroll">
+        <img src="tmp.png" alt="" />
+        <img src="tmp.png" alt="" />
+        <img src="tmp.png" alt="" />
+        <img src="tmp.png" alt="" />
+        <img src="tmp.png" alt="" />
+        <img src="tmp.png" alt="" />
+        <img src="tmp.png" alt="" />
+        <img src="tmp.png" alt="" />
+      </drag-scroll>
+    </div>
+    <script src="scroll.js"></script>
+    <script>
+      let target = document.querySelector(".scroll");
+      let width = 500;
+      let length = target.querySelectorAll("img").length;
+      let i = 0;
+      let increase = 1;
+      setInterval(() => {
         target.scrollTo({
-            top: 0,
-            left: width * i,
-            behavior: 'smooth'
-        })
+          top: 0,
+          left: width * i,
+          behavior: "smooth",
+        });
         if (i >= length - 1) {
-            increase = -1
+          increase = -1;
         } else if (i <= 0) {
-            increase = 1
+          increase = 1;
         }
-        i += increase
-    }, 1000);
-</script>
-</body>
+        i += increase;
+      }, 1000);
+    </script>
+  </body>
 </html>

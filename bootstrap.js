@@ -1,4 +1,4 @@
-import _ from 'lodash';
-import randomColor from 'randomcolor'
+import _ from "lodash";
+import randomColor from "randomcolor";
 
-window.randomColor = randomColor
+window.randomColor = randomColor;

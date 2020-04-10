@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-</head>
-<body>
-<script>
-(function () {
-    var wb = XLSX.utils.book_new();
-    let ws = XLSX.utils.aoa_to_sheet([
-        [1,2,3,4]
-    ])
-    XLSX.utils.book_append_sheet(wb, ws, 'name');
-    XLSX.writeFile(wb, 'test.xlsx');
-})();
-</script>
-</body>
+  </head>
+  <body>
+    <script>
+      (function () {
+        var wb = XLSX.utils.book_new();
+        let ws = XLSX.utils.aoa_to_sheet([[1, 2, 3, 4]]);
+        XLSX.utils.book_append_sheet(wb, ws, "name");
+        XLSX.writeFile(wb, "test.xlsx");
+      })();
+    </script>
+  </body>
 </html>

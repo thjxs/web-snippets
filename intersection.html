@@ -1,85 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Intersection</title>
     <style>
-        body, p {
-            margin: 0;
-        }
-        #root {
-            height: 400px;
-            overflow: auto;
-            width: 400px;
-        }
+      body,
+      p {
+        margin: 0;
+      }
+      #root {
+        height: 400px;
+        overflow: auto;
+        width: 400px;
+      }
     </style>
-</head>
-<body>
-<div id="root">
-<p>a</p>
-<p>a</p>
-<p>as</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>as</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>as</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>as</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
-<p>as</p>
-<p>a</p>
-<p>a</p>
-<p>a</p>
+  </head>
+  <body>
+    <div id="root">
+      <p>a</p>
+      <p>a</p>
+      <p>as</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>as</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>as</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>as</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+      <p>as</p>
+      <p>a</p>
+      <p>a</p>
+      <p>a</p>
+    </div>
+    <script>
+      var observer = new IntersectionObserver(
+        (changes) => {
+          for (const change of changes) {
+            console.log(change.time); // Timestamp when the change occurred
+            console.log(change.rootBounds); // Unclipped area of root
+            console.log(change.boundingClientRect); // target.boundingClientRect
+            console.log(change.intersectionRect); // boundingClientRect, clipped by its containing block ancestors, and intersected with rootBounds
+            console.log(change.intersectionRatio); // Ratio of intersectionRect area to boundingClientRect area
+            console.log(change.target); // the Element target
+            if (change.intersectionRatio > 0.6) {
+              change.target.style.background = "#ccc";
+            }
+          }
+        },
+        { threshold: [0, 0.5, 1], rootMargin: "0px 0px 50px 0px" }
+      );
 
+      let c = document.getElementById("root");
+      let target = document.createElement("div");
+      target.style.marginLeft = "8px";
+      target.style.height = "200px";
+      target.innerText = "whoops";
+      target.style.transition = "all 2s";
+      c.appendChild(target);
 
-</div>
-<script>
-var observer = new IntersectionObserver(changes => {
-    for (const change of changes) {
-        console.log(change.time);  // Timestamp when the change occurred
-        console.log(change.rootBounds); // Unclipped area of root
-        console.log(change.boundingClientRect); // target.boundingClientRect
-        console.log(change.intersectionRect);  // boundingClientRect, clipped by its containing block ancestors, and intersected with rootBounds
-        console.log(change.intersectionRatio);  // Ratio of intersectionRect area to boundingClientRect area
-        console.log(change.target);  // the Element target
-        if (change.intersectionRatio > 0.6) {
+      observer.observe(target);
 
-            change.target.style.background = '#ccc'
-        }
-    }
-}, {threshold: [0, 0.5, 1], rootMargin: '0px 0px 50px 0px'});
+      // observer.unobserve(target);
 
-let c = document.getElementById('root')
-let target = document.createElement('div')
-target.style.marginLeft = '8px'
-target.style.height = '200px'
-target.innerText = 'whoops'
-target.style.transition = 'all 2s'
-c.appendChild(target)
-
-observer.observe(target);
-
-// observer.unobserve(target);
-
-// observer.disconnect();
-</script>
-</body>
+      // observer.disconnect();
+    </script>
+  </body>
 </html>

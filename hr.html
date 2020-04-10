@@ -1,59 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>HR with centered text</title>
     <style>
-        hr {
-            position: relative;
-            outline: 0;
-            border: 0;
-            text-align: center;
-        }
-        hr::before {
-            content: '';
-            background-image: linear-gradient(to right, transparent, #818078, transparent);
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 100%;
-            height: 1px;
-        }
-        hr::after {
-            content: attr(data-content);
-            position: relative;
-            display: inline-block;
-            padding: 0 .5em;
-            line-height: 1.5em;
-            color: #818078;
-            background-color: #fcfcfa;
-        }
-        .head-hr {
-            color: #818078;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            padding: 0 28px 28px;
-            outline: 0;
-            border-bottom: 2px solid currentColor;
-        }
-        .head-hr::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            display: inline-block;
-            background-color: #111111;
-            width: 2em;
-            height: 4px;
-        }
+      hr {
+        position: relative;
+        outline: 0;
+        border: 0;
+        text-align: center;
+      }
+      hr::before {
+        content: "";
+        background-image: linear-gradient(
+          to right,
+          transparent,
+          #818078,
+          transparent
+        );
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 1px;
+      }
+      hr::after {
+        content: attr(data-content);
+        position: relative;
+        display: inline-block;
+        padding: 0 0.5em;
+        line-height: 1.5em;
+        color: #818078;
+        background-color: #fcfcfa;
+      }
+      .head-hr {
+        color: #818078;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 0 28px 28px;
+        outline: 0;
+        border-bottom: 2px solid currentColor;
+      }
+      .head-hr::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        display: inline-block;
+        background-color: #111111;
+        width: 2em;
+        height: 4px;
+      }
     </style>
-</head>
-<body>
-<hr data-content="center-text">
-<div class="head-hr">
-    标题
-</div>
-</body>
+  </head>
+  <body>
+    <hr data-content="center-text" />
+    <div class="head-hr">
+      标题
+    </div>
+  </body>
 </html>

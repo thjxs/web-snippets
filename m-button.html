@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Material design style click</title>
     <style>
-/*
+      /*
 App reset by Ben Frain @benfrain / benfrain.com
 
 Latest: https://github.com/benfrain/app-reset
@@ -21,299 +21,311 @@ Be aware that some of these resets have a negative impact on the default usabili
 
 */
 
-/*Hat tip to @thierrykoblentz for this approach: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-html {
-    box-sizing: border-box;
-    /* Nicer looking fonts for OS X and iOS */
-    -webkit-font-smoothing: antialiased;
-}
+      /*Hat tip to @thierrykoblentz for this approach: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+      html {
+        box-sizing: border-box;
+        /* Nicer looking fonts for OS X and iOS */
+        -webkit-font-smoothing: antialiased;
+      }
 
-/*Yes, the universal selector. No, it isn't slow: https://benfrain.com/css-performance-revisited-selectors-bloat-expensive-styles/*/
-* {
-    /* Later browsers can be more easily reset with `all: unset`. It's commented out by default here as it's pretty heavy handed. However, further declarations on these elements follow for older browsers. If you uncomment this property/value REMEMBER accessibility for outlines etc. This undoes a LOT of default UA styling, use with EXTREME caution!! */
-    /* all: unset; */
-    /*This prevents users being able to select text. Stops long presses in iOS bringing up copy/paste UI for example. Note below we specifically switch user-select on for inputs for the sake of Safari. Bug here: https://bugs.webkit.org/show_bug.cgi?id=82692*/
-    user-select: none;
-    /*This gets -webkit specific prefix as it is a non W3C property*/
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    /*Older Androids need this instead*/
-    -webkit-tap-highlight-color: transparent;
-    /* Most devs find border-box easier to reason about. However by inheriting we can mix box-sizing approaches.*/
-    box-sizing: inherit;
-}
+      /*Yes, the universal selector. No, it isn't slow: https://benfrain.com/css-performance-revisited-selectors-bloat-expensive-styles/*/
+      * {
+        /* Later browsers can be more easily reset with `all: unset`. It's commented out by default here as it's pretty heavy handed. However, further declarations on these elements follow for older browsers. If you uncomment this property/value REMEMBER accessibility for outlines etc. This undoes a LOT of default UA styling, use with EXTREME caution!! */
+        /* all: unset; */
+        /*This prevents users being able to select text. Stops long presses in iOS bringing up copy/paste UI for example. Note below we specifically switch user-select on for inputs for the sake of Safari. Bug here: https://bugs.webkit.org/show_bug.cgi?id=82692*/
+        user-select: none;
+        /*This gets -webkit specific prefix as it is a non W3C property*/
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        /*Older Androids need this instead*/
+        -webkit-tap-highlight-color: transparent;
+        /* Most devs find border-box easier to reason about. However by inheriting we can mix box-sizing approaches.*/
+        box-sizing: inherit;
+      }
 
-*:before,
-*:after {
-    box-sizing: inherit;
-}
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
 
-/* Switching user-select on for inputs and contenteditable specifically for Safari (see bug link above)*/
-input[type],
-[contenteditable] {
-    user-select: text;
-}
+      /* Switching user-select on for inputs and contenteditable specifically for Safari (see bug link above)*/
+      input[type],
+      [contenteditable] {
+        user-select: text;
+      }
 
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-    /*We will be adding our own margin to these elements as needed.*/
-    margin: 0;
-    /*You'll want to set font-size as needed.*/
-    font-size: 1rem;
-    /*No bold for h tags unless you want it*/
-    font-weight: 400;
-}
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        /*We will be adding our own margin to these elements as needed.*/
+        margin: 0;
+        /*You'll want to set font-size as needed.*/
+        font-size: 1rem;
+        /*No bold for h tags unless you want it*/
+        font-weight: 400;
+      }
 
-/*
+      /*
 Thanks to L. David Baron for this:
 https://twitter.com/davidbaron/status/794138427952222210 */
-base,
-basefont,
-datalist,
-head,
-meta,
-script,
-style,
-title,
-noembed,
-param,
-template {
-    display: none;
-}
+      base,
+      basefont,
+      datalist,
+      head,
+      meta,
+      script,
+      style,
+      title,
+      noembed,
+      param,
+      template {
+        display: none;
+      }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
 
-/*No bold for b tags by default*/
-b {
-    font-weight: 400;
-}
+      /*No bold for b tags by default*/
+      b {
+        font-weight: 400;
+      }
 
-/*Prevent these elements having italics by default*/
-em,
-i {
-    font-style: normal;
-}
+      /*Prevent these elements having italics by default*/
+      em,
+      i {
+        font-style: normal;
+      }
 
-/*IMPORTANT: This removes the focus outline for most browsers. Be aware this is a backwards accessibilty step! Mozilla (i.e. Firefox) also adds a dotted outline around a tags and buttons when they receive tab focus which I haven't found an unhacky way of removing.*/
-a:focus,
-button:focus {
-    outline: 0;
-}
+      /*IMPORTANT: This removes the focus outline for most browsers. Be aware this is a backwards accessibilty step! Mozilla (i.e. Firefox) also adds a dotted outline around a tags and buttons when they receive tab focus which I haven't found an unhacky way of removing.*/
+      a:focus,
+      button:focus {
+        outline: 0;
+      }
 
-/* The button element tends to get a lot of default styles which we largely undo here. We set text-alignment (usually set to center by UA style sheet) and the font-family to inherit from your own styles instead. */
-button {
-    appearance: none;
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-    text-align: inherit;
-    font-family: inherit;
-}
+      /* The button element tends to get a lot of default styles which we largely undo here. We set text-alignment (usually set to center by UA style sheet) and the font-family to inherit from your own styles instead. */
+      button {
+        appearance: none;
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        text-align: inherit;
+        font-family: inherit;
+      }
 
-input,
-fieldset {
-    appearance: none;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    /*inputs and fieldset defaults to having a min-width equal to its content in Chrome and Firefox (https://code.google.com/p/chromium/issues/detail?id=560762), we may not want that*/
-    min-width: 0;
-    /*Reset the font size and family*/
-    font-size: 1rem;
-    font-family: inherit;
-}
+      input,
+      fieldset {
+        appearance: none;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        /*inputs and fieldset defaults to having a min-width equal to its content in Chrome and Firefox (https://code.google.com/p/chromium/issues/detail?id=560762), we may not want that*/
+        min-width: 0;
+        /*Reset the font size and family*/
+        font-size: 1rem;
+        font-family: inherit;
+      }
 
-/* For IE, we want to remove the default cross ('X') that appears in input fields when a user starts typing - Make sure you add your own! */
-input::-ms-clear {
-    display: none;
-}
+      /* For IE, we want to remove the default cross ('X') that appears in input fields when a user starts typing - Make sure you add your own! */
+      input::-ms-clear {
+        display: none;
+      }
 
-/*This switches the default outline off when an input receives focus (really important for users tabbing through with a keyboard) so ensure you put something decent in for your input focus instead!!*/
-input:focus {
-    outline: 0;
-}
+      /*This switches the default outline off when an input receives focus (really important for users tabbing through with a keyboard) so ensure you put something decent in for your input focus instead!!*/
+      input:focus {
+        outline: 0;
+      }
 
-input[type="number"] {
-    /*Mozilla shows the spinner UI on number inputs unless we use this:*/
-    -moz-appearance: textfield;
-}
+      input[type="number"] {
+        /*Mozilla shows the spinner UI on number inputs unless we use this:*/
+        -moz-appearance: textfield;
+      }
 
-/*Removes the little spinner controls for number type inputs (WebKit browsers/forks only)*/
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    appearance: none;
-}
+      /*Removes the little spinner controls for number type inputs (WebKit browsers/forks only)*/
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        appearance: none;
+      }
 
-/*SVG defaults to display: inline which I dislike. Inline-block or inline-flex will render white space on SVG elements in HTML (where you would have defs and symbols) if the container isn't a flex box or the font-size set to 0 to crush the whitespace */
-svg {
-    display: block;
-}
+      /*SVG defaults to display: inline which I dislike. Inline-block or inline-flex will render white space on SVG elements in HTML (where you would have defs and symbols) if the container isn't a flex box or the font-size set to 0 to crush the whitespace */
+      svg {
+        display: block;
+      }
 
-img {
-    /*Make images behave responsively. Here they will scale up to 100% of their natural size*/
-    max-width: 100%;
-    /*Make images display as a block (UA default is usually inline)*/
-    display: block;
-}
+      img {
+        /*Make images behave responsively. Here they will scale up to 100% of their natural size*/
+        max-width: 100%;
+        /*Make images display as a block (UA default is usually inline)*/
+        display: block;
+      }
 
-/*Removes the default focusring that Mozilla places on select items. From: http://stackoverflow.com/a/18853002/1147859
+      /*Removes the default focusring that Mozilla places on select items. From: http://stackoverflow.com/a/18853002/1147859
 Ensure you set `#000` to the colour you want your text to appear */
-select:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 #000;
-}
+      select:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+      }
 
-/* Switching on box-sizing: border-box by default; toggle this off if you want more granular control */
-body {
-    box-sizing: border-box;
-}
+      /* Switching on box-sizing: border-box by default; toggle this off if you want more granular control */
+      body {
+        box-sizing: border-box;
+      }
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-}
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
 
-body {
-	margin: 50vh 0;
-	background-color: #494949;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Tahoma, Roboto, Oxygen, Ubuntu,
-        Cantarell, "Fira Sans", "Open Sans", sans-serif;
-}
+      body {
+        margin: 50vh 0;
+        background-color: #494949;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+          "Segoe UI", Tahoma, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
+          "Open Sans", sans-serif;
+      }
 
+      /* Styles relevant to this technique */
 
-/* Styles relevant to this technique */
+      .btn-Group {
+        max-width: 500px;
+        margin: 20vh auto;
+        font-size: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: #454545;
+      }
 
-.btn-Group {
-    max-width: 500px;
-    margin: 20vh auto;
-    font-size: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #454545;
-}
+      .btn-Group_Header {
+        font-size: 1.3rem;
+        color: #ddd;
+        background-color: #444;
+        padding: 10px;
+      }
 
-.btn-Group_Header {
-    font-size: 1.3rem;
-    color: #ddd;
-    background-color: #444;
-    padding: 10px;
-}
+      .btn-Btn {
+        display: inline-flex;
+        padding: 0 10px;
+        min-height: 80px;
+        align-items: center;
+        justify-content: start;
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        overflow: hidden;
+        transition: all 0.1s;
+        background-color: #505050;
+      }
+      .btn-Btn:nth-of-type(1) {
+        width: 25%;
+      }
+      .btn-Btn:nth-of-type(2) {
+        width: 50%;
+      }
+      .btn-Btn:nth-of-type(3) {
+        width: 100%;
+      }
 
-.btn-Btn {
-    display: inline-flex;
-    padding: 0 10px;
-    min-height: 80px;
-    align-items: center;
-    justify-content: start;
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    overflow: hidden;
-    transition: all 0.1s;
-    background-color: #505050;
-}
-.btn-Btn:nth-of-type(1) {
-    width: 25%;
-}
-.btn-Btn:nth-of-type(2) {
-    width: 50%;
-}
-.btn-Btn:nth-of-type(3) {
-    width: 100%;
-}
+      .btn-Btn:before {
+        content: "";
+        position: absolute;
+        top: calc(var(--y) - var(--width) / 2);
+        left: calc(var(--x) - var(--width) / 2);
+        transform-origin: 50% 50%;
+        background-color: #d2d2d2;
 
-.btn-Btn:before {
-    content: "";
-    position: absolute;
-    top: calc(var(--y) - var(--width) / 2);
-    left: calc(var(--x) - var(--width) / 2);
-    transform-origin: 50% 50%;
-    background-color: #d2d2d2;
+        height: var(--width);
+        width: var(--width);
+        border-radius: 50%;
+        z-index: -1;
+        transform: scale(0);
+        opacity: 0;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
 
-    height: var(--width);
-    width: var(--width);
-    border-radius: 50%;
-    z-index: -1;
-    transform: scale(0);
-    opacity: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
+      .btn-Group-circle .btn-Btn[aria-selected="true"]:before {
+        transform: none;
+        opacity: 1;
+        transition: transform 0.2s ease, opacity 0.1s ease;
+      }
 
-.btn-Group-circle .btn-Btn[aria-selected="true"]:before {
-    transform: none;
-    opacity: 1;
-    transition: transform 0.2s ease, opacity 0.1s ease;
-}
+      .btn-Btn_Name {
+        font-size: 1.1rem;
+        color: #d2d2d2;
+        margin: 0 5px;
+        transition: color 0.1s;
+      }
 
+      [aria-selected="true"] .btn-Btn_Name {
+        color: #555;
+      }
 
-.btn-Btn_Name {
-    font-size: 1.1rem;
-    color: #d2d2d2;
-    margin: 0 5px;
-    transition: color 0.1s;
-}
+      .btn-Btn_B {
+        font-size: 1.1rem;
+        color: #f90;
+        transition: color 0.1s;
+      }
 
-[aria-selected="true"] .btn-Btn_Name {
-    color: #555;
-}
-
-.btn-Btn_B {
-    font-size: 1.1rem;
-    color: #f90;
-    transition: color 0.1s;
-}
-
-[aria-selected="true"] .btn-Btn_B {
-    color: #5948db;
-}
-</style>
-</head>
-<body>
+      [aria-selected="true"] .btn-Btn_B {
+        color: #5948db;
+      }
+    </style>
+  </head>
+  <body>
     <section class="btn-Group-circle">
-        <button class="btn-Btn">click</button>
+      <button class="btn-Btn">click</button>
     </section>
     <section class="btn-Group btn-Group-circle">
-        <h1 class="btn-Group_Header">'Material design' inspired</h1>
-        <button class="btn-Btn btn-Btn_Small">
-            <span class="btn-Btn_B">Hello</span>
-        </button>
-        <button class="btn-Btn btn-Btn_Small" aria-selected="false">
-            <span class="btn-Btn_Name">Sub</span>
-            <span class="btn-Btn_B">Hello</span>
-        </button>
-        <button class="btn-Btn btn-Btn_Large">
-            <span class="btn-Btn_Name">Bigger text</span>
-            <span class="btn-Btn_B">To fill this button</span>
-        </button>
+      <h1 class="btn-Group_Header">'Material design' inspired</h1>
+      <button class="btn-Btn btn-Btn_Small">
+        <span class="btn-Btn_B">Hello</span>
+      </button>
+      <button class="btn-Btn btn-Btn_Small" aria-selected="false">
+        <span class="btn-Btn_Name">Sub</span>
+        <span class="btn-Btn_B">Hello</span>
+      </button>
+      <button class="btn-Btn btn-Btn_Large">
+        <span class="btn-Btn_Name">Bigger text</span>
+        <span class="btn-Btn_B">To fill this button</span>
+      </button>
     </section>
     <script>
-    document.body.addEventListener("pointerdown", e => {
+      document.body.addEventListener("pointerdown", (e) => {
         // Ignore anything that isn't the button or a child of it
-        if (e.target.tagName !== "BUTTON" && e.target.parentNode.tagName !== "BUTTON") {
-            return;
+        if (
+          e.target.tagName !== "BUTTON" &&
+          e.target.parentNode.tagName !== "BUTTON"
+        ) {
+          return;
         }
         const theBtn = e.target.closest("button");
         const neededLeft = e.x - theBtn.getBoundingClientRect().left;
         const neededTop = e.y - theBtn.getBoundingClientRect().top;
-        const biggestA = Math.max(neededLeft, theBtn.getBoundingClientRect().width - neededLeft);
-        const biggestB = Math.max(neededTop, theBtn.getBoundingClientRect().height - neededTop);
+        const biggestA = Math.max(
+          neededLeft,
+          theBtn.getBoundingClientRect().width - neededLeft
+        );
+        const biggestB = Math.max(
+          neededTop,
+          theBtn.getBoundingClientRect().height - neededTop
+        );
         //const neededWidth = biggest * 2 + 25;
         //length of diagonal through rectangle is a2 + b2 = c2.
-        const neededWidth = Math.sqrt(biggestA * biggestA + biggestB * biggestB) * 2;
+        const neededWidth =
+          Math.sqrt(biggestA * biggestA + biggestB * biggestB) * 2;
         theBtn.style.setProperty("--x", `${neededLeft}px`);
         theBtn.style.setProperty("--y", `${neededTop}px`);
         theBtn.style.setProperty("--width", `${neededWidth}px`);
-        theBtn.setAttribute("aria-selected", theBtn.getAttribute("aria-selected") === "true" ? "false" : "true");
-    });
+        theBtn.setAttribute(
+          "aria-selected",
+          theBtn.getAttribute("aria-selected") === "true" ? "false" : "true"
+        );
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Regex</title>
-</head>
-<body>
-<p>handle string</p>
-<textarea name="value" id="vv" cols="30" rows="10"></textarea>
-<button>test</button>
-<script>
-    let button = document.querySelector('button')
-    function handle(str) {
-        const removeLastEnter = /\n+/gm
+  </head>
+  <body>
+    <p>handle string</p>
+    <textarea name="value" id="vv" cols="30" rows="10"></textarea>
+    <button>test</button>
+    <script>
+      let button = document.querySelector("button");
+      function handle(str) {
+        const removeLastEnter = /\n+/gm;
         const reg = /\s+/gm;
         const removeFirstOrEndSpace = /(\s+$|^\s+)/gm;
-        return str.replace(removeLastEnter, '\n').split('\n').map(item => item.replace(removeFirstOrEndSpace, '').replace(reg, ' ').split(' '))
-
-    }
-    button.addEventListener('click', function () {
-        let value = document.getElementById('vv').value
+        return str
+          .replace(removeLastEnter, "\n")
+          .split("\n")
+          .map((item) =>
+            item.replace(removeFirstOrEndSpace, "").replace(reg, " ").split(" ")
+          );
+      }
+      button.addEventListener("click", function () {
+        let value = document.getElementById("vv").value;
         console.log(handle(value));
-
-    })
-</script>
-</body>
+      });
+    </script>
+  </body>
 </html>

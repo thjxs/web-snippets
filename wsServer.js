@@ -1,150 +1,150 @@
 "use strict";
 
-var http = require('http');
-var WebSocketServer = require('websocket').server;
+var http = require("http");
+var WebSocketServer = require("websocket").server;
 
 var connectionArray = [];
 var nextID = Date.now();
 var appendToMakeUnique = 1;
 
 var httpServer = http.createServer(function (request, response) {
-    console.log((new Date()) + "Received request for " + request.url);
-    response.writeHead(404);
-    response.end();
+  console.log(new Date() + "Received request for " + request.url);
+  response.writeHead(404);
+  response.end();
 });
 
 httpServer.listen(6502, function () {
-    console.log((new Date()) + " Server is listening on port 6502");
+  console.log(new Date() + " Server is listening on port 6502");
 });
 
 var wsServer = new WebSocketServer({
-    httpServer: httpServer,
-    autoAcceptConnections: false
+  httpServer: httpServer,
+  autoAcceptConnections: false,
 });
 
 function originIsAllowed(origin) {
-    return true;
+  return true;
 }
 
 function isUsernameUnique(name) {
-    var isUnique = true;
-    var i;
-    for (i = 0; i < connectionArray.length; i += 1) {
-        if (connectionArray[i].username === name) {
-            isUnique = false;
-            break;
-        }
+  var isUnique = true;
+  var i;
+  for (i = 0; i < connectionArray.length; i += 1) {
+    if (connectionArray[i].username === name) {
+      isUnique = false;
+      break;
     }
-    return isUnique;
+  }
+  return isUnique;
 }
 
 function getConnectionForID(id) {
-    var connect = null;
-    var i;
-    for (i = 0; i < connectionArray.length; i += 1) {
-        if (connectionArray[i].clientID === id) {
-            connect = connectionArray[i];
-            break;
-        }
+  var connect = null;
+  var i;
+  for (i = 0; i < connectionArray.length; i += 1) {
+    if (connectionArray[i].clientID === id) {
+      connect = connectionArray[i];
+      break;
     }
+  }
 
-    return connect;
+  return connect;
 }
 
 function makeUserListMessage() {
-    var userListMsg = {
-        type: 'userlist',
-        users: []
-    };
-    var i;
+  var userListMsg = {
+    type: "userlist",
+    users: [],
+  };
+  var i;
 
-    for (i = 0; i < connectionArray.length; i++) {
-        userListMsg.users.push(connectionArray[i].username);
-    }
+  for (i = 0; i < connectionArray.length; i++) {
+    userListMsg.users.push(connectionArray[i].username);
+  }
 
-    return userListMsg;
+  return userListMsg;
 }
 
 function sendUserListToAll() {
-    var userListMsg = makeUserListMessage();
-    var userListMsgStr = JSON.stringify(userListMsg);
-    var i;
+  var userListMsg = makeUserListMessage();
+  var userListMsgStr = JSON.stringify(userListMsg);
+  var i;
 
-    for (i = 0; i < connectionArray.length; i += 1) {
-        connectionArray[i].sendUTF(userListMsgStr);
-    }
+  for (i = 0; i < connectionArray.length; i += 1) {
+    connectionArray[i].sendUTF(userListMsgStr);
+  }
 }
 
-wsServer.on('request', function (request) {
-    if (!originIsAllowed(request.origin)) {
-        request.reject();
-        return;
-    }
+wsServer.on("request", function (request) {
+  if (!originIsAllowed(request.origin)) {
+    request.reject();
+    return;
+  }
 
-    var connection = request.accept('wms', request.origin);
-    connectionArray.push(connection);
+  var connection = request.accept("wms", request.origin);
+  connectionArray.push(connection);
 
-    connection.clientID = nextID;
-    nextID += 1;
+  connection.clientID = nextID;
+  nextID += 1;
 
-    var msg = {
-        type: 'id',
-        id: connection.clientID
-    };
-    connection.sendUTF(JSON.stringify(msg));
+  var msg = {
+    type: "id",
+    id: connection.clientID,
+  };
+  connection.sendUTF(JSON.stringify(msg));
 
-    connection.on('message', function (message) {
-        console.log(message);
+  connection.on("message", function (message) {
+    console.log(message);
 
-        if (message.type === 'utf8') {
-            var sendToClients = true;
-            msg = JSON.parse(message.utf8Data);
-            var connect = getConnectionForID(msg.id);
+    if (message.type === "utf8") {
+      var sendToClients = true;
+      msg = JSON.parse(message.utf8Data);
+      var connect = getConnectionForID(msg.id);
 
-            switch (msg.type) {
-                case 'message':
-                    msg.name = connect.username;
-                    msg.text = msg.text.replace(/(<([^>]+)>)/ig, '');
-                    break;
-                case 'username':
-                    var nameChanged = false;
-                    var origName = msg.name;
+      switch (msg.type) {
+        case "message":
+          msg.name = connect.username;
+          msg.text = msg.text.replace(/(<([^>]+)>)/gi, "");
+          break;
+        case "username":
+          var nameChanged = false;
+          var origName = msg.name;
 
-                    while (!isUsernameUnique(msg.name)) {
-                        msg.name = origName + appendToMakeUnique;
-                        appendToMakeUnique += 1;
-                        nameChanged = true;
-                    }
+          while (!isUsernameUnique(msg.name)) {
+            msg.name = origName + appendToMakeUnique;
+            appendToMakeUnique += 1;
+            nameChanged = true;
+          }
 
-                    if (nameChanged) {
-                        var changeMsg = {
-                            id: msg.id,
-                            type: 'rejectusername',
-                            name: msg.name
-                        };
-                        connect.sendUTF(JSON.stringify(changeMsg));
-                    }
+          if (nameChanged) {
+            var changeMsg = {
+              id: msg.id,
+              type: "rejectusername",
+              name: msg.name,
+            };
+            connect.sendUTF(JSON.stringify(changeMsg));
+          }
 
-                    connect.username = msg.name;
-                    sendUserListToAll();
-                    break;
-            }
+          connect.username = msg.name;
+          sendUserListToAll();
+          break;
+      }
 
-            if (sendToClients) {
-                var msgString = JSON.stringify(msg);
-                var i;
+      if (sendToClients) {
+        var msgString = JSON.stringify(msg);
+        var i;
 
-                for (i = 0; i < connectionArray.length; i += 1) {
-                    connectionArray[i].sendUTF(msgString);
-                }
-            }
+        for (i = 0; i < connectionArray.length; i += 1) {
+          connectionArray[i].sendUTF(msgString);
         }
-    });
+      }
+    }
+  });
 
-    connection.on('close', function (connection) {
-        connectionArray = connectionArray.filter(function (el, idx, ar) {
-            return el.connected;
-        });
-        sendUserListToAll();
+  connection.on("close", function (connection) {
+    connectionArray = connectionArray.filter(function (el, idx, ar) {
+      return el.connected;
     });
+    sendUserListToAll();
+  });
 });

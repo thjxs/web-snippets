@@ -1,30 +1,30 @@
 <div id="progress"></div>
 
 <script type="text/javascript">
-    let oReq = new XMLHttpRequest()
-    oReq.addEventListener('progress', updateProgress)
-    oReq.addEventListener('load', transferComplete)
-    oReq.addEventListener('error', transferFailed)
-    oReq.addEventListener('abort', transferCanceled)
-    oReq.open('GET', 'http://localhost:5000/example')
-    oReq.send()
+  let oReq = new XMLHttpRequest();
+  oReq.addEventListener("progress", updateProgress);
+  oReq.addEventListener("load", transferComplete);
+  oReq.addEventListener("error", transferFailed);
+  oReq.addEventListener("abort", transferCanceled);
+  oReq.open("GET", "http://localhost:5000/example");
+  oReq.send();
 
-    function updateProgress(oEvent) {
-        console.log(oEvent.lengthComputable)
-        if (oEvent.lengthComputable) {
-            console.log(oEvent.loaded, oEvent.total)
-        }
+  function updateProgress(oEvent) {
+    console.log(oEvent.lengthComputable);
+    if (oEvent.lengthComputable) {
+      console.log(oEvent.loaded, oEvent.total);
     }
+  }
 
-    function transferComplete(evt) {
-      console.log("The transfer is complete.");
-    }
+  function transferComplete(evt) {
+    console.log("The transfer is complete.");
+  }
 
-    function transferFailed(evt) {
-      console.log("An error occurred while transferring the file.");
-    }
+  function transferFailed(evt) {
+    console.log("An error occurred while transferring the file.");
+  }
 
-    function transferCanceled(evt) {
-      console.log("The transfer has been canceled by the user.");
-    }
+  function transferCanceled(evt) {
+    console.log("The transfer has been canceled by the user.");
+  }
 </script>

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Download</title>
     <script src="download.js"></script>
-</head>
-<body>
-<button id="button">download</button>
-<script>
-(function (button) {
-    button.addEventListener('click', function () {
-        exportExcel('1,2,3', [], 'test.csv')
-    })
-})(document.getElementById('button'));
-</script>
-</body>
+  </head>
+  <body>
+    <button id="button">download</button>
+    <script>
+      (function (button) {
+        button.addEventListener("click", function () {
+          exportExcel("1,2,3", [], "test.csv");
+        });
+      })(document.getElementById("button"));
+    </script>
+  </body>
 </html>

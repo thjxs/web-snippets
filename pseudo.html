@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Pseudo</title>
     <style>
-        section {
-            position: relative;
-            width: 100px;
-            padding-right: 120px;
-        }
-        a::before {
-            content: '';
-            height: 40px;
-            width: 40px;
-            background: currentColor;
-            position: absolute;
-            opacity: .5;
-        }
-        a:nth-child(even) {
-            color: brown;
-        }
-        a:nth-child(odd) {
-            color: aqua;
-        }
-        a:hover {
-            color: rgba(35, 136, 136, 0.295);
-            text-decoration: none;
-        }
-        a:hover::before {
-            opacity: .8;
-            transform: scale(1.2);
-        }
-        a::before:hover {
-            opacity: .8;
-            transform: scale(1.2);
-        }
-        a:nth-child(even)::before {
-            right: 0;
-            top: 12px;
-            transform: rotate(30deg);
-        }
-        a:nth-child(odd)::before {
-            right: 0;
-            top: 12px;
-        }
+      section {
+        position: relative;
+        width: 100px;
+        padding-right: 120px;
+      }
+      a::before {
+        content: "";
+        height: 40px;
+        width: 40px;
+        background: currentColor;
+        position: absolute;
+        opacity: 0.5;
+      }
+      a:nth-child(even) {
+        color: brown;
+      }
+      a:nth-child(odd) {
+        color: aqua;
+      }
+      a:hover {
+        color: rgba(35, 136, 136, 0.295);
+        text-decoration: none;
+      }
+      a:hover::before {
+        opacity: 0.8;
+        transform: scale(1.2);
+      }
+      a::before:hover {
+        opacity: 0.8;
+        transform: scale(1.2);
+      }
+      a:nth-child(even)::before {
+        right: 0;
+        top: 12px;
+        transform: rotate(30deg);
+      }
+      a:nth-child(odd)::before {
+        right: 0;
+        top: 12px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <section>
-        <p>This is content text that you can read from <a href="#1">hehehehe</a>, or from another one <a href="#2">biubiubiu</a></p>
+      <p>
+        This is content text that you can read from <a href="#1">hehehehe</a>,
+        or from another one <a href="#2">biubiubiu</a>
+      </p>
     </section>
-</body>
+  </body>
 </html>

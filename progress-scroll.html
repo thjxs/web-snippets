@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>progress-scroll</title>
     <style>
-        body {
-            height: 2400px;
-            margin: 0;
-        }
+      body {
+        height: 2400px;
+        margin: 0;
+      }
     </style>
-</head>
-<body>
-
-<script>
-(function () {
-    let indicator = document.createElement('div')
-    let wrapper = document.createElement('div')
-    wrapper.appendChild(indicator)
-    document.body.appendChild(wrapper)
-    wrapper.style.height = '4px'
-    wrapper.style.background = 'rgb(234,234,234)'
-    wrapper.style.width = '100%'
-    wrapper.style.position = 'fixed'
-    wrapper.style.top = '0'
-    wrapper.style.left = '0'
-    indicator.style.height = '100%'
-    indicator.style.width = '0'
-    indicator.style.background = 'rgb(242,124,194)'
-    document.addEventListener('scroll', (e) => {
-        let h = document.documentElement.scrollHeight
-        let ih = window.innerHeight
-        let oh = h - ih
-        let rate = window.pageYOffset / oh
-        let w = (rate * 100).toFixed(3)
-        indicator.style.width = `${w}%`
-    })
-})()
-</script>
-</body>
+  </head>
+  <body>
+    <script>
+      (function () {
+        let indicator = document.createElement("div");
+        let wrapper = document.createElement("div");
+        wrapper.appendChild(indicator);
+        document.body.appendChild(wrapper);
+        wrapper.style.height = "4px";
+        wrapper.style.background = "rgb(234,234,234)";
+        wrapper.style.width = "100%";
+        wrapper.style.position = "fixed";
+        wrapper.style.top = "0";
+        wrapper.style.left = "0";
+        indicator.style.height = "100%";
+        indicator.style.width = "0";
+        indicator.style.background = "rgb(242,124,194)";
+        document.addEventListener("scroll", (e) => {
+          let h = document.documentElement.scrollHeight;
+          let ih = window.innerHeight;
+          let oh = h - ih;
+          let rate = window.pageYOffset / oh;
+          let w = (rate * 100).toFixed(3);
+          indicator.style.width = `${w}%`;
+        });
+      })();
+    </script>
+  </body>
 </html>
