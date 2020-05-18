@@ -50,13 +50,13 @@
         i += increase;
       }
       let timerId = setInterval(play, 1000);
-      document.addEventListener('visibilitychange', function () {
-        if (document.visibilityState === 'visible') {
-          timerId = setInterval(play, 1000)
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "visible") {
+          timerId = setInterval(play, 1000);
         } else {
-          clearInterval(timerId)
+          clearInterval(timerId);
         }
-      })
+      });
     </script>
   </body>
 </html>
