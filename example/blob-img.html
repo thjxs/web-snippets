@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #root img {
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        (function () {
+            const button = document.createElement('button')
+
+            const root = document.getElementById('root')
+            const input = document.createElement('input')
+            input.type = 'file'
+            input.hidden = true
+            button.addEventListener('click', function () {
+                input.click()
+            })
+            button.innerText = 'add'
+            input.addEventListener('change', function(e) {
+                const img = document.createElement('img')
+                img.src = URL.createObjectURL(input.files[0])
+                root.appendChild(img)
+            })
+            document.body.appendChild(button)
+            document.body.appendChild(input)
+
+        })();
+    </script>
+</body>
+</html>

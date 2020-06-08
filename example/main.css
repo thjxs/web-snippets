@@ -177,6 +177,10 @@ template {
   display: none;
 }
 
+.center {
+  text-align: center;
+}
+
 .flex {
   display: flex;
 }
