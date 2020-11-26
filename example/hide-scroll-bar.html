@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hide scroll bar</title>
+  <style>
+    .hide-scroll {
+      overflow: hidden;
+      position: relative;
+    }
+    .hide-container {
+      height: 400px;
+      overflow: auto;
+      position: relative;
+      margin-left: -18px;
+      left: 18px;
+    }
+    .content {
+      height: 1200px;
+      background-image: linear-gradient(0deg, #6a0c0c, #3e629a);
+    }
+  </style>
+</head>
+<body>
+<div class="hide-scroll">
+  <div class="hide-container">
+    <div class="content"></div>
+  </div>
+</div>
+</body>
+</html>
