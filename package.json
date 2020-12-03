@@ -6,13 +6,13 @@
   },
   "dependencies": {
     "lodash": "^4.17.19",
-    "randomcolor": "^0.5.4",
+    "randomcolor": "^0.6",
     "websocket": "^1.0.31"
   },
   "devDependencies": {
     "prettier": "^2.0.4",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack": "^5.9",
+    "webpack-cli": "^4.2"
   },
   "license": "MIT"
 }
