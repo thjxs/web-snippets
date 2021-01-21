@@ -27,14 +27,14 @@
       </div>
     </section>
     <script>
-      let target = document.getElementById("progress");
-      let span = target.querySelector("span");
+      let target = document.getElementById('progress');
+      let span = target.querySelector('span');
       let width = 0;
       let t = setInterval(() => {
         width += 1;
-        span.style.width = width / 10 + "%";
+        span.style.width = width / 10 + '%';
         if (width === 1000) {
-          span.style.backgroundColor = "green";
+          span.style.backgroundColor = 'green';
           clearInterval(t);
         }
       }, 10);

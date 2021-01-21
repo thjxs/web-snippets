@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css" />
     <style>
-        .container {
-            position: relative;
-        }
-        #c {
-            top: 0;
-            left: 0;
-            position: absolute;
-        }
+      .container {
+        position: relative;
+      }
+      #c {
+        top: 0;
+        left: 0;
+        position: absolute;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <img src="tmp.png" alt="">
-        <canvas id="c"></canvas>
+      <img src="tmp.png" alt="" />
+      <canvas id="c"></canvas>
     </div>
     <script>
-        const c = document.getElementById('c')
-        c.width = 564
-        c.height = 705
-        const ctx = c.getContext('2d')
-        const img = new Image()
-        img.onload = () => {
-            ctx.drawImage(img, 0, 0)
-            ctx.globalCompositeOperation = 'destinaiton-out'
-            const duration = 1800
-            const start = Date.now()
+      const c = document.getElementById('c');
+      c.width = 564;
+      c.height = 705;
+      const ctx = c.getContext('2d');
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+        ctx.globalCompositeOperation = 'destinaiton-out';
+        const duration = 1800;
+        const start = Date.now();
 
-            let frameCnt = 0
-            const render = () => {
-                ++frameCnt
-                const pixels = ctx.getImageData(0, 0, c.width, c.height)
-                const data = pixels.data
-                const pixelsPerFrame = c.width * c.height / duration * frameCnt
-                for(let i = 0; i < pixelsPerFrame; ++i) {
-                    const id = Math.floor(Math.random() * c.width * c.height)
-                    data[id * 4 + 3] = 0
-                }
-                ctx.putImageData(pixels, 0, 0)
-                if (Date.now() - start < duration) {
-                    requestAnimationFrame(render)
-                } else {
-                    c.style.opacity = 0
-                }
-            }
-            setTimeout(function() {
-                render()
-            }, 300);
-        }
-        img.src = 't2.jpg'
+        let frameCnt = 0;
+        const render = () => {
+          ++frameCnt;
+          const pixels = ctx.getImageData(0, 0, c.width, c.height);
+          const data = pixels.data;
+          const pixelsPerFrame = ((c.width * c.height) / duration) * frameCnt;
+          for (let i = 0; i < pixelsPerFrame; ++i) {
+            const id = Math.floor(Math.random() * c.width * c.height);
+            data[id * 4 + 3] = 0;
+          }
+          ctx.putImageData(pixels, 0, 0);
+          if (Date.now() - start < duration) {
+            requestAnimationFrame(render);
+          } else {
+            c.style.opacity = 0;
+          }
+        };
+        setTimeout(function () {
+          render();
+        }, 300);
+      };
+      img.src = 't2.jpg';
     </script>
-</body>
+  </body>
 </html>

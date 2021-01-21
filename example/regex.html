@@ -11,20 +11,20 @@
     <textarea name="value" id="vv" cols="30" rows="10"></textarea>
     <button>test</button>
     <script>
-      let button = document.querySelector("button");
+      let button = document.querySelector('button');
       function handle(str) {
         const removeLastEnter = /\n+/gm;
         const reg = /\s+/gm;
         const removeFirstOrEndSpace = /(\s+$|^\s+)/gm;
         return str
-          .replace(removeLastEnter, "\n")
-          .split("\n")
+          .replace(removeLastEnter, '\n')
+          .split('\n')
           .map((item) =>
-            item.replace(removeFirstOrEndSpace, "").replace(reg, " ").split(" ")
+            item.replace(removeFirstOrEndSpace, '').replace(reg, ' ').split(' ')
           );
       }
-      button.addEventListener("click", function () {
-        let value = document.getElementById("vv").value;
+      button.addEventListener('click', function () {
+        let value = document.getElementById('vv').value;
         console.log(handle(value));
       });
     </script>

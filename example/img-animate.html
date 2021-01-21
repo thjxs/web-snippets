@@ -1,163 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css" />
     <style>
-        .container {
-            position: relative;
-            width: 375px;
-            height: 675px;
-            overflow: hidden;
-            border: 1px solid;
-        }
+      .container {
+        position: relative;
+        width: 375px;
+        height: 675px;
+        overflow: hidden;
+        border: 1px solid;
+      }
 
-        .wrapper {
-            display: flex;
-            align-items: center;
-            width: 128px;
-            margin-left: auto;
-            margin-right: auto;
-            transition: width .25s;
-        }
+      .wrapper {
+        display: flex;
+        align-items: center;
+        width: 128px;
+        margin-left: auto;
+        margin-right: auto;
+        transition: width 0.25s;
+      }
 
-        .wrapper.clicked {
-            width: 100%;
-            height: 100%;
-        }
+      .wrapper.clicked {
+        width: 100%;
+        height: 100%;
+      }
 
-        .black {
-            background-color: #000;
-        }
+      .black {
+        background-color: #000;
+      }
 
-        img {
-            user-select: none;
-            width: 100%;
-        }
+      img {
+        user-select: none;
+        width: 100%;
+      }
 
-        #aoo {
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
+      #aoo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
 
-        #ic img {
-            transform-origin: top left;
-        }
+      #ic img {
+        transform-origin: top left;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container" id="c">
-        <div class="wrapper mx-auto">
-            <img src="tmp.png" alt="">
-        </div>
-        <div class="wrapper mx-auto">
-            <img src="tmp.png" alt="">
-        </div>
-        <div class="wrapper mx-auto">
-            <img src="tmp.png" alt="">
-        </div>
-        <div class="wrapper mx-auto">
-            <img src="tmp.png" alt="">
-        </div>
-        <div class="wrapper mx-auto">
-            <img src="tmp.png" alt="">
-        </div>
-        <div class="wrapper mx-auto">
-            <img src="tmp.png" alt="">
-        </div>
-        <div id="aoo">
-            <div class="ic" id="ic">
-            </div>
-        </div>
+      <div class="wrapper mx-auto">
+        <img src="tmp.png" alt="" />
+      </div>
+      <div class="wrapper mx-auto">
+        <img src="tmp.png" alt="" />
+      </div>
+      <div class="wrapper mx-auto">
+        <img src="tmp.png" alt="" />
+      </div>
+      <div class="wrapper mx-auto">
+        <img src="tmp.png" alt="" />
+      </div>
+      <div class="wrapper mx-auto">
+        <img src="tmp.png" alt="" />
+      </div>
+      <div class="wrapper mx-auto">
+        <img src="tmp.png" alt="" />
+      </div>
+      <div id="aoo">
+        <div class="ic" id="ic"></div>
+      </div>
     </div>
     <script>
-        function getElementViewLeft(element) {
-            let actualLeft = element.offsetLeft;
-            let current = element.offsetParent;
+      function getElementViewLeft(element) {
+        let actualLeft = element.offsetLeft;
+        let current = element.offsetParent;
 
-            while (current !== null) {
-                actualLeft += current.offsetLeft;
-                current = current.offsetParent;
-            }
-
-            let elementScrollLeft = document.documentElement.scrollLeft;
-            if (document.compatMode == "BackCompat") {
-                elementScrollLeft = document.body.scrollLeft;
-            }
-
-            return actualLeft - elementScrollLeft;
+        while (current !== null) {
+          actualLeft += current.offsetLeft;
+          current = current.offsetParent;
         }
 
-        function getElementViewTop(element) {
-            let actualTop = element.offsetTop
-            let current = element.offsetParent
+        let elementScrollLeft = document.documentElement.scrollLeft;
+        if (document.compatMode == 'BackCompat') {
+          elementScrollLeft = document.body.scrollLeft;
+        }
 
-            while (current !== null) {
-                actualTop += current.offsetTop
-                current = current.offsetParent
-            }
+        return actualLeft - elementScrollLeft;
+      }
 
-            let elementScrollTop = document.documentElement.scrollTop
-            if (document.compatMode === 'BackCompat') {
-                elementScrollTop = document.body.scrollTop
-            }
-            return actualTop - elementScrollTop
+      function getElementViewTop(element) {
+        let actualTop = element.offsetTop;
+        let current = element.offsetParent;
+
+        while (current !== null) {
+          actualTop += current.offsetTop;
+          current = current.offsetParent;
         }
-        function getTL(element) {
-            return [getElementViewLeft(element), getElementViewTop(element)]
+
+        let elementScrollTop = document.documentElement.scrollTop;
+        if (document.compatMode === 'BackCompat') {
+          elementScrollTop = document.body.scrollTop;
         }
-        function getM(e1, e2) {
-            const v1 = getTL(e1)
-            const v2 = getTL(e2)
-            const w1 = e1.scrollWidth
-            const w2 = e2.scrollWidth
-            const r = w2 / w1
-            const offset = v1.map((v, i) => v2[i] - v)
-            return [r, 0, 0, r, offset[0], offset[1]]
-        }
-        const aoo = document.getElementById('aoo')
-        const c = document.getElementById('c')
-        const ic = document.getElementById('ic')
-        const w = document.getElementsByClassName('wrapper')
-        let tar = null
-        aoo.addEventListener('click', () => {
-            aoo.classList.toggle('black')
-            const img = ic.getElementsByTagName('img')
-            const m = getM(img[0], tar)
-            img[0].style.transform = 'matrix(' + m.join(',') + ')'
+        return actualTop - elementScrollTop;
+      }
+      function getTL(element) {
+        return [getElementViewLeft(element), getElementViewTop(element)];
+      }
+      function getM(e1, e2) {
+        const v1 = getTL(e1);
+        const v2 = getTL(e2);
+        const w1 = e1.scrollWidth;
+        const w2 = e2.scrollWidth;
+        const r = w2 / w1;
+        const offset = v1.map((v, i) => v2[i] - v);
+        return [r, 0, 0, r, offset[0], offset[1]];
+      }
+      const aoo = document.getElementById('aoo');
+      const c = document.getElementById('c');
+      const ic = document.getElementById('ic');
+      const w = document.getElementsByClassName('wrapper');
+      let tar = null;
+      aoo.addEventListener('click', () => {
+        aoo.classList.toggle('black');
+        const img = ic.getElementsByTagName('img');
+        const m = getM(img[0], tar);
+        img[0].style.transform = 'matrix(' + m.join(',') + ')';
+        setTimeout(() => {
+          ic.removeChild(img[0]);
+        }, 300);
+      });
+      for (let i = 0; i < w.length; i += 1) {
+        w.item(i).addEventListener('click', () => {
+          const img = document.createElement('img');
+          ic.appendChild(img);
+          img.src = 'tmp.png';
+          img.style.visibility = 'hidden';
+          img.onload = (e) => {
+            tar = w.item(i);
+            const m = getM(img, w.item(i));
+            img.style.transform = 'matrix(' + m.join(',') + ')';
             setTimeout(() => {
-
-                ic.removeChild(img[0])
-            }, 300);
-        })
-        for (let i = 0; i < w.length; i += 1) {
-            w.item(i).addEventListener('click', () => {
-                const img = document.createElement('img')
-                ic.appendChild(img)
-                img.src = 'tmp.png'
-                img.style.visibility = 'hidden'
-                img.onload = (e => {
-                    tar = w.item(i)
-                    const m = getM(img, w.item(i))
-                    img.style.transform = 'matrix(' + m.join(',') + ')'
-                    setTimeout(() => {
-                        img.style.visibility = ''
-                        img.style.transition = '.3s'
-                        img.style.transform = ''
-                        aoo.classList.toggle('black')
-                    }, 100);
-                })
-            })
-        }
+              img.style.visibility = '';
+              img.style.transition = '.3s';
+              img.style.transform = '';
+              aoo.classList.toggle('black');
+            }, 100);
+          };
+        });
+      }
     </script>
-</body>
-
+  </body>
 </html>

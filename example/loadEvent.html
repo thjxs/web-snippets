@@ -8,12 +8,12 @@
   <body>
     <img id="img" src="/tmp.png" alt="" />
     <script>
-      const img = document.getElementById("img");
+      const img = document.getElementById('img');
       img.onload = function (e) {
         console.log(e);
       };
       setTimeout(() => {
-        img.setAttribute("src", "/t2.jpg");
+        img.setAttribute('src', '/t2.jpg');
       }, 2000);
     </script>
   </body>

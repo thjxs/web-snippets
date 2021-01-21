@@ -46,19 +46,19 @@
 
     <script>
       // Store reference to lists, paragraph and button
-      const list1 = document.querySelector(".input ul");
-      const list2 = document.querySelector(".output ul");
-      const para = document.querySelector("p");
-      const button = document.querySelector("button");
+      const list1 = document.querySelector('.input ul');
+      const list2 = document.querySelector('.output ul');
+      const para = document.querySelector('p');
+      const button = document.querySelector('button');
 
       // create empty string in which to store result
-      let result = "";
+      let result = '';
 
       // function to generate random character string
       function randomChars() {
-        let string = "";
+        let string = '';
         let choices =
-          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+          'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
 
         for (let i = 0; i < 8; i++) {
           string += choices.charAt(Math.floor(Math.random() * choices.length));
@@ -75,12 +75,12 @@
             controller.enqueue(string);
 
             // show it on the screen
-            let listItem = document.createElement("li");
+            let listItem = document.createElement('li');
             listItem.textContent = string;
             list1.appendChild(listItem);
           }, 1000);
 
-          button.addEventListener("click", function () {
+          button.addEventListener('click', function () {
             clearInterval(interval);
             readStream();
             controller.close();
@@ -107,18 +107,18 @@
           // done  - true if the stream has already given you all its data.
           // value - some data. Always undefined when done is true.
           if (done) {
-            console.log("Stream complete");
+            console.log('Stream complete');
             para.textContent = result;
             return;
           }
 
           charsReceived += value.length;
           const chunk = value;
-          let listItem = document.createElement("li");
+          let listItem = document.createElement('li');
           listItem.textContent =
-            "Read " +
+            'Read ' +
             charsReceived +
-            " characters so far. Current chunk = " +
+            ' characters so far. Current chunk = ' +
             chunk;
           list2.appendChild(listItem);
 

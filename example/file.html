@@ -9,9 +9,9 @@
   <body>
     <input type="file" name="file" id="file" multiple />
     <script>
-      let b = document.createElement("button");
+      let b = document.createElement('button');
       let c1, c2;
-      b.addEventListener("click", () => {
+      b.addEventListener('click', () => {
         console.log(file.files);
         let stream = [];
         for (let i = 0; i < file.files.length; i += 1) {
@@ -26,10 +26,10 @@
         }
         c2 = new ReadableStream(new ConcatStreamController(stream));
       });
-      b.innerText = "click";
+      b.innerText = 'click';
       document.body.appendChild(b);
-      let file = document.getElementById("file");
-      file.addEventListener("change", function (e) {
+      let file = document.getElementById('file');
+      file.addEventListener('change', function (e) {
         console.log(e);
       });
     </script>

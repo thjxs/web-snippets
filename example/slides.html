@@ -36,8 +36,8 @@
       </div>
     </div>
     <c-slides width="500">
-      <div class="mainview" style="width: 500px; overflow: hidden;">
-        <p style="width: 5000px;">12</p>
+      <div class="mainview" style="width: 500px; overflow: hidden">
+        <p style="width: 5000px">12</p>
       </div>
       <div class="preview">1</div>
       <div class="preview">2</div>
@@ -47,23 +47,23 @@
       class SlidesElement extends HTMLElement {
         constructor() {
           super();
-          console.log(this.getAttribute("width"));
+          console.log(this.getAttribute('width'));
         }
       }
 
-      window.customElements.define("c-slides", SlidesElement);
+      window.customElements.define('c-slides', SlidesElement);
 
       (function () {
-        let slides = document.getElementById("slides");
+        let slides = document.getElementById('slides');
         let width = 500;
-        let m = slides.querySelector(".mainView");
-        let ss = slides.querySelectorAll(".preview-slide");
+        let m = slides.querySelector('.mainView');
+        let ss = slides.querySelectorAll('.preview-slide');
         for (let i = 0; i < ss.length; i += 1) {
-          ss[i].addEventListener("click", function (e) {
+          ss[i].addEventListener('click', function (e) {
             m.scrollTo({
               top: 0,
               left: width * i,
-              behavior: "smooth",
+              behavior: 'smooth',
             });
           });
         }

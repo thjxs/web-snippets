@@ -61,19 +61,19 @@
             console.log(change.intersectionRatio); // Ratio of intersectionRect area to boundingClientRect area
             console.log(change.target); // the Element target
             if (change.intersectionRatio > 0.6) {
-              change.target.style.background = "#ccc";
+              change.target.style.background = '#ccc';
             }
           }
         },
-        { threshold: [0, 0.5, 1], rootMargin: "0px 0px 50px 0px" }
+        { threshold: [0, 0.5, 1], rootMargin: '0px 0px 50px 0px' }
       );
 
-      let c = document.getElementById("root");
-      let target = document.createElement("div");
-      target.style.marginLeft = "8px";
-      target.style.height = "200px";
-      target.innerText = "whoops";
-      target.style.transition = "all 2s";
+      let c = document.getElementById('root');
+      let target = document.createElement('div');
+      target.style.marginLeft = '8px';
+      target.style.height = '200px';
+      target.innerText = 'whoops';
+      target.style.transition = 'all 2s';
       c.appendChild(target);
 
       observer.observe(target);

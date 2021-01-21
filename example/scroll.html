@@ -31,16 +31,16 @@
     </div>
     <script src="scroll.js"></script>
     <script>
-      let target = document.querySelector(".scroll");
+      let target = document.querySelector('.scroll');
       let width = 500;
-      let length = target.querySelectorAll("img").length;
+      let length = target.querySelectorAll('img').length;
       let i = 0;
       let increase = 1;
       function play() {
         target.scrollTo({
           top: 0,
           left: width * i,
-          behavior: "smooth",
+          behavior: 'smooth',
         });
         if (i >= length - 1) {
           increase = -1;
@@ -50,8 +50,8 @@
         i += increase;
       }
       let timerId = setInterval(play, 1000);
-      document.addEventListener("visibilitychange", function () {
-        if (document.visibilityState === "visible") {
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') {
           timerId = setInterval(play, 1000);
         } else {
           clearInterval(timerId);

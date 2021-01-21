@@ -12,8 +12,8 @@
       (function () {
         var wb = XLSX.utils.book_new();
         let ws = XLSX.utils.aoa_to_sheet([[1, 2, 3, 4]]);
-        XLSX.utils.book_append_sheet(wb, ws, "name");
-        XLSX.writeFile(wb, "test.xlsx");
+        XLSX.utils.book_append_sheet(wb, ws, 'name');
+        XLSX.writeFile(wb, 'test.xlsx');
       })();
     </script>
   </body>

@@ -11,19 +11,19 @@
       e.o(n, r) || Object.defineProperty(n, r, { enumerable: !0, get: t });
     }),
     (e.r = function (n) {
-      "undefined" != typeof Symbol &&
+      'undefined' != typeof Symbol &&
         Symbol.toStringTag &&
-        Object.defineProperty(n, Symbol.toStringTag, { value: "Module" }),
-        Object.defineProperty(n, "__esModule", { value: !0 });
+        Object.defineProperty(n, Symbol.toStringTag, { value: 'Module' }),
+        Object.defineProperty(n, '__esModule', { value: !0 });
     }),
     (e.t = function (n, r) {
       if ((1 & r && (n = e(n)), 8 & r)) return n;
-      if (4 & r && "object" == typeof n && n && n.__esModule) return n;
+      if (4 & r && 'object' == typeof n && n && n.__esModule) return n;
       var t = Object.create(null);
       if (
         (e.r(t),
-        Object.defineProperty(t, "default", { enumerable: !0, value: n }),
-        2 & r && "string" != typeof n)
+        Object.defineProperty(t, 'default', { enumerable: !0, value: n }),
+        2 & r && 'string' != typeof n)
       )
         for (var i in n)
           e.d(
@@ -44,12 +44,12 @@
           : function () {
               return n;
             };
-      return e.d(r, "a", r), r;
+      return e.d(r, 'a', r), r;
     }),
     (e.o = function (n, r) {
       return Object.prototype.hasOwnProperty.call(n, r);
     }),
-    (e.p = ""),
+    (e.p = ''),
     e((e.s = 1));
 })([
   function (n, r) {
@@ -152,24 +152,24 @@
         );
       }),
       (r.seed = function (n) {
-        if ("number" != typeof n)
-          throw new Error("seed(S) must take numeric argument; is " + typeof n);
+        if ('number' != typeof n)
+          throw new Error('seed(S) must take numeric argument; is ' + typeof n);
         t.init_genrand(n);
       }),
       (r.seed_array = function (n) {
-        if ("object" != typeof n)
+        if ('object' != typeof n)
           throw new Error(
-            "seed_array(A) must take array of numbers; is " + typeof n
+            'seed_array(A) must take array of numbers; is ' + typeof n
           );
         t.init_by_array(n, n.length);
       });
   },
   function (n, r, e) {
-    "use strict";
+    'use strict';
     e.r(r);
     var t = e(0);
     window.randomNumber = function (n) {
-      "number" == typeof n && (n = { max: n }),
+      'number' == typeof n && (n = { max: n }),
         void 0 === (n = n || {}).min && (n.min = 0),
         void 0 === n.max && (n.max = 99999),
         void 0 === n.precision && (n.precision = 1);

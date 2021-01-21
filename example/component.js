@@ -3,9 +3,9 @@ class Custom extends HTMLAnchorElement {
     super();
   }
   connectedCallback() {
-    console.log("??");
-    this.style.fontSize = "50px";
+    console.log('??');
+    this.style.fontSize = '50px';
   }
 }
 
-window.customElements.define("c-a", Custom, { extends: "a" });
+window.customElements.define('c-a', Custom, { extends: 'a' });

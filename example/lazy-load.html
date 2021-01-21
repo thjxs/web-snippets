@@ -30,13 +30,13 @@
     <script src="/index.js"></script>
     <script>
       function rgbToHex(r, g, b) {
-        return ((r << 16) + (g << 8) + b).toString(16).padStart(6, "0");
+        return ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
       }
       function hexColor(c) {
         if (c < 256) {
-          return Math.abs(c).toString(16).padStart(2, "0");
+          return Math.abs(c).toString(16).padStart(2, '0');
         }
-        return "00";
+        return '00';
       }
       function CustomRandomColor() {
         let min = 0;
@@ -47,10 +47,10 @@
       }
 
       function createCanvas() {
-        let canvas = document.createElement("canvas");
+        let canvas = document.createElement('canvas');
         canvas.height = 200;
         canvas.width = 200;
-        let contex = canvas.getContext("2d");
+        let contex = canvas.getContext('2d');
         contex.fillStyle = randomColor();
         contex.fillRect(0, 0, 200, 200);
         return canvas;
@@ -70,9 +70,9 @@
             threshold: [0.01],
           }
         );
-        let main = document.querySelector("main");
+        let main = document.querySelector('main');
         for (let i = 0; i < 105; i += 1) {
-          let div = document.createElement("div");
+          let div = document.createElement('div');
           main.appendChild(div);
           io.observe(div);
         }

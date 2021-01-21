@@ -85,23 +85,23 @@
       </span>
     </button>
     <script>
-      const t = document.body.querySelector(".root");
+      const t = document.body.querySelector('.root');
       console.log(t);
-      t.addEventListener("click", function (e) {
-        let c = e.currentTarget.querySelector(".shape");
-        let r = e.currentTarget.querySelector("[role=ripple]");
-        r.style.display = "";
+      t.addEventListener('click', function (e) {
+        let c = e.currentTarget.querySelector('.shape');
+        let r = e.currentTarget.querySelector('[role=ripple]');
+        r.style.display = '';
         c.style.hidden = false;
         c.style.cx = e.offsetX;
         c.style.cy = e.offsetY;
         c.style.r = 160;
       });
-      t.addEventListener("transitionend", function (e) {
+      t.addEventListener('transitionend', function (e) {
         console.log(e);
-        let c = e.currentTarget.querySelector(".shape");
-        let r = e.currentTarget.querySelector("[role=ripple]");
+        let c = e.currentTarget.querySelector('.shape');
+        let r = e.currentTarget.querySelector('[role=ripple]');
         if (e.srcElement == c) {
-          r.style.display = "none";
+          r.style.display = 'none';
           c.style.r = 1;
         }
       });

@@ -35,40 +35,40 @@
       const nativeFetch = window.fetch;
       const fakeFetch = function (_, options) {
         const path = `https://httpbin.org/status/${
-          options.body.get("value") === "422" ? "422" : "200"
+          options.body.get('value') === '422' ? '422' : '200'
         }`;
         return nativeFetch(path, options);
       };
       window.fetch = fakeFetch;
 
       for (const form of document.forms) {
-        const formInput = form.querySelector("input");
-        const button = form.querySelector("button");
-        const state = form.querySelector(".state");
+        const formInput = form.querySelector('input');
+        const button = form.querySelector('button');
+        const state = form.querySelector('.state');
 
-        formInput.addEventListener("focus", () => {
+        formInput.addEventListener('focus', () => {
           focusedInput = formInput;
         });
 
-        form.addEventListener("auto-check-start", () => {
-          if (form.id === "custom") {
+        form.addEventListener('auto-check-start', () => {
+          if (form.id === 'custom') {
             const { setValidity } = event.detail;
-            setValidity("🔍 Checking validity...");
+            setValidity('🔍 Checking validity...');
           }
-          state.textContent = "loading";
+          state.textContent = 'loading';
         });
-        form.addEventListener("auto-check-success", (event) => {
-          state.textContent = "succeeded";
+        form.addEventListener('auto-check-success', (event) => {
+          state.textContent = 'succeeded';
         });
-        form.addEventListener("auto-check-error", (event) => {
-          if (form.id === "custom") {
+        form.addEventListener('auto-check-error', (event) => {
+          if (form.id === 'custom') {
             const { setValidity } = event.detail;
-            setValidity("🚫 Something went wrong.");
+            setValidity('🚫 Something went wrong.');
           }
-          state.textContent = "error";
+          state.textContent = 'error';
         });
-        form.addEventListener("auto-check-complete", () => {
-          if (state.textContent === "loading") state.textContent = "";
+        form.addEventListener('auto-check-complete', () => {
+          if (state.textContent === 'loading') state.textContent = '';
         });
       }
     </script>

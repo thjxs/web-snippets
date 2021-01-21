@@ -141,14 +141,14 @@ https://twitter.com/davidbaron/status/794138427952222210 */
         outline: 0;
       }
 
-      input[type="number"] {
+      input[type='number'] {
         /*Mozilla shows the spinner UI on number inputs unless we use this:*/
         -moz-appearance: textfield;
       }
 
       /*Removes the little spinner controls for number type inputs (WebKit browsers/forks only)*/
-      input[type="number"]::-webkit-inner-spin-button,
-      input[type="number"]::-webkit-outer-spin-button {
+      input[type='number']::-webkit-inner-spin-button,
+      input[type='number']::-webkit-outer-spin-button {
         appearance: none;
       }
 
@@ -185,9 +185,9 @@ Ensure you set `#000` to the colour you want your text to appear */
       body {
         margin: 50vh 0;
         background-color: #494949;
-        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-          "Segoe UI", Tahoma, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
-          "Open Sans", sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+          'Segoe UI', Tahoma, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+          'Open Sans', sans-serif;
       }
 
       /* Styles relevant to this technique */
@@ -232,7 +232,7 @@ Ensure you set `#000` to the colour you want your text to appear */
       }
 
       .btn-Btn:before {
-        content: "";
+        content: '';
         position: absolute;
         top: calc(var(--y) - var(--width) / 2);
         left: calc(var(--x) - var(--width) / 2);
@@ -248,7 +248,7 @@ Ensure you set `#000` to the colour you want your text to appear */
         transition: transform 0.2s ease, opacity 0.2s ease;
       }
 
-      .btn-Group-circle .btn-Btn[aria-selected="true"]:before {
+      .btn-Group-circle .btn-Btn[aria-selected='true']:before {
         transform: none;
         opacity: 1;
         transition: transform 0.2s ease, opacity 0.1s ease;
@@ -261,7 +261,7 @@ Ensure you set `#000` to the colour you want your text to appear */
         transition: color 0.1s;
       }
 
-      [aria-selected="true"] .btn-Btn_Name {
+      [aria-selected='true'] .btn-Btn_Name {
         color: #555;
       }
 
@@ -271,7 +271,7 @@ Ensure you set `#000` to the colour you want your text to appear */
         transition: color 0.1s;
       }
 
-      [aria-selected="true"] .btn-Btn_B {
+      [aria-selected='true'] .btn-Btn_B {
         color: #5948db;
       }
     </style>
@@ -295,15 +295,15 @@ Ensure you set `#000` to the colour you want your text to appear */
       </button>
     </section>
     <script>
-      document.body.addEventListener("pointerdown", (e) => {
+      document.body.addEventListener('pointerdown', (e) => {
         // Ignore anything that isn't the button or a child of it
         if (
-          e.target.tagName !== "BUTTON" &&
-          e.target.parentNode.tagName !== "BUTTON"
+          e.target.tagName !== 'BUTTON' &&
+          e.target.parentNode.tagName !== 'BUTTON'
         ) {
           return;
         }
-        const theBtn = e.target.closest("button");
+        const theBtn = e.target.closest('button');
         const neededLeft = e.x - theBtn.getBoundingClientRect().left;
         const neededTop = e.y - theBtn.getBoundingClientRect().top;
         const biggestA = Math.max(
@@ -318,12 +318,12 @@ Ensure you set `#000` to the colour you want your text to appear */
         //length of diagonal through rectangle is a2 + b2 = c2.
         const neededWidth =
           Math.sqrt(biggestA * biggestA + biggestB * biggestB) * 2;
-        theBtn.style.setProperty("--x", `${neededLeft}px`);
-        theBtn.style.setProperty("--y", `${neededTop}px`);
-        theBtn.style.setProperty("--width", `${neededWidth}px`);
+        theBtn.style.setProperty('--x', `${neededLeft}px`);
+        theBtn.style.setProperty('--y', `${neededTop}px`);
+        theBtn.style.setProperty('--width', `${neededWidth}px`);
         theBtn.setAttribute(
-          "aria-selected",
-          theBtn.getAttribute("aria-selected") === "true" ? "false" : "true"
+          'aria-selected',
+          theBtn.getAttribute('aria-selected') === 'true' ? 'false' : 'true'
         );
       });
     </script>

@@ -4,12 +4,12 @@
     <button type="submit">submit</button>
   </form>
   <script>
-    const form = document.getElementById("form");
+    const form = document.getElementById('form');
     form.onsubmit = handleSubmit;
     function handleSubmit(e) {
       e.preventDefault();
       const fd = new FormData(form);
-      alert(fd.get('test'))
+      alert(fd.get('test'));
     }
   </script>
 </html>

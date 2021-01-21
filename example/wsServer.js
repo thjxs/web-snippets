@@ -1,20 +1,20 @@
-"use strict";
+'use strict';
 
-var http = require("http");
-var WebSocketServer = require("websocket").server;
+var http = require('http');
+var WebSocketServer = require('websocket').server;
 
 var connectionArray = [];
 var nextID = Date.now();
 var appendToMakeUnique = 1;
 
 var httpServer = http.createServer(function (request, response) {
-  console.log(new Date() + "Received request for " + request.url);
+  console.log(new Date() + 'Received request for ' + request.url);
   response.writeHead(404);
   response.end();
 });
 
 httpServer.listen(6502, function () {
-  console.log(new Date() + " Server is listening on port 6502");
+  console.log(new Date() + ' Server is listening on port 6502');
 });
 
 var wsServer = new WebSocketServer({
@@ -53,7 +53,7 @@ function getConnectionForID(id) {
 
 function makeUserListMessage() {
   var userListMsg = {
-    type: "userlist",
+    type: 'userlist',
     users: [],
   };
   var i;
@@ -75,38 +75,38 @@ function sendUserListToAll() {
   }
 }
 
-wsServer.on("request", function (request) {
+wsServer.on('request', function (request) {
   if (!originIsAllowed(request.origin)) {
     request.reject();
     return;
   }
 
-  var connection = request.accept("wms", request.origin);
+  var connection = request.accept('wms', request.origin);
   connectionArray.push(connection);
 
   connection.clientID = nextID;
   nextID += 1;
 
   var msg = {
-    type: "id",
+    type: 'id',
     id: connection.clientID,
   };
   connection.sendUTF(JSON.stringify(msg));
 
-  connection.on("message", function (message) {
+  connection.on('message', function (message) {
     console.log(message);
 
-    if (message.type === "utf8") {
+    if (message.type === 'utf8') {
       var sendToClients = true;
       msg = JSON.parse(message.utf8Data);
       var connect = getConnectionForID(msg.id);
 
       switch (msg.type) {
-        case "message":
+        case 'message':
           msg.name = connect.username;
-          msg.text = msg.text.replace(/(<([^>]+)>)/gi, "");
+          msg.text = msg.text.replace(/(<([^>]+)>)/gi, '');
           break;
-        case "username":
+        case 'username':
           var nameChanged = false;
           var origName = msg.name;
 
@@ -119,7 +119,7 @@ wsServer.on("request", function (request) {
           if (nameChanged) {
             var changeMsg = {
               id: msg.id,
-              type: "rejectusername",
+              type: 'rejectusername',
               name: msg.name,
             };
             connect.sendUTF(JSON.stringify(changeMsg));
@@ -141,7 +141,7 @@ wsServer.on("request", function (request) {
     }
   });
 
-  connection.on("close", function (connection) {
+  connection.on('close', function (connection) {
     connectionArray = connectionArray.filter(function (el, idx, ar) {
       return el.connected;
     });

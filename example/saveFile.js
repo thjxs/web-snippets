@@ -1,20 +1,20 @@
 (async function start() {
-  await navigator.serviceWorker.register("/serviceWorker.js");
+  await navigator.serviceWorker.register('/serviceWorker.js');
   await navigator.serviceWorker.ready;
-  const button = document.createElement("button");
-  button.addEventListener("click", function () {
-    const a = document.createElement("a");
-    a.href = "/tmp.png";
+  const button = document.createElement('button');
+  button.addEventListener('click', function () {
+    const a = document.createElement('a');
+    a.href = '/tmp.png';
     document.body.appendChild(a);
     a.click();
   });
-  button.innerText = "download";
+  button.innerText = 'download';
   document.body.appendChild(button);
 })();
 
 async function handleFile(stream) {
   let text = await streamToArrayBuffer(stream);
-  saveFile({ plaintext: text, name: "ff", type: "image/png" });
+  saveFile({ plaintext: text, name: 'ff', type: 'image/png' });
 }
 
 async function streamToArrayBuffer(stream, size) {
@@ -57,12 +57,12 @@ async function saveFile(file) {
       return resolve();
     } else if (/iPhone|fxios/i.test(navigator.userAgent)) {
       const reader = new FileReader();
-      reader.addEventListener("loadend", function () {
+      reader.addEventListener('loadend', function () {
         if (reader.error) {
           return reject(reader.error);
         }
         if (reader.result) {
-          const a = document.createElement("a");
+          const a = document.createElement('a');
           a.href = reader.result;
           a.download = file.name;
           document.body.appendChild(a);
@@ -73,7 +73,7 @@ async function saveFile(file) {
       reader.readAsDataURL(blob);
     } else {
       const downloadUrl = URL.createObjectURL(blob);
-      const a = document.createElement("a");
+      const a = document.createElement('a');
       a.href = downloadUrl;
       a.download = file.name;
       document.body.appendChild(a);

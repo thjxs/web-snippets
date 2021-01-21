@@ -12,33 +12,33 @@
       <div class="flex">
         <div class="border-dashed pr">
           <svg
-            style="top: 36%; right: -62px; transform: rotate(77deg);"
+            style="top: 36%; right: -62px; transform: rotate(77deg)"
             viewBox="0 0 10 20"
             class="arrow-svg absolute"
           >
             <path d="M5,0 l-2,2 h1.5 v20 h1 v-20 h1.5z"></path>
           </svg>
-          <div style="transform: translateY(-28px);" class="center">
+          <div style="transform: translateY(-28px)" class="center">
             <strong class="bg-yellow js-head">JS</strong>
           </div>
           <div class="flex mb-2">
-            <div class="border pr px-1 mx-1" style="border-bottom-style: none;">
+            <div class="border pr px-1 mx-1" style="border-bottom-style: none">
               <h1 class="center">heap</h1>
               <span
-                style="top: -10px; left: 12px;"
+                style="top: -10px; left: 12px"
                 class="pr heap-block bg-blue"
               ></span>
               <span
-                style="top: 4px; left: 18px;"
+                style="top: 4px; left: 18px"
                 class="pr heap-block bg-green"
               ></span>
               <span
-                style="top: 5px; left: 2px;"
+                style="top: 5px; left: 2px"
                 class="pr heap-block bg-red"
               ></span>
-              <span style="top: 40px;" class="pr heap-block bg-purple"></span>
+              <span style="top: 40px" class="pr heap-block bg-purple"></span>
             </div>
-            <div class="border px-1 mx-1" style="border-bottom-style: none;">
+            <div class="border px-1 mx-1" style="border-bottom-style: none">
               <h1>stack</h1>
               <ul class="center">
                 <li class="bg-yellow">foo()</li>
@@ -48,9 +48,9 @@
             </div>
           </div>
         </div>
-        <div class="pr mx-4" style="margin-left: 84px;">
+        <div class="pr mx-4" style="margin-left: 84px">
           <svg
-            style="right: 62px; bottom: -22px; transform: rotate(192deg);"
+            style="right: 62px; bottom: -22px; transform: rotate(192deg)"
             viewBox="0 0 10 20"
             class="arrow-svg absolute"
           >
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="flex align-center">
-        <span style="font-size: 24px;">event loop</span>
+        <span style="font-size: 24px">event loop</span>
         <svg class="loop-svg" viewBox="0 0 24 24">
           <path
             d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"
@@ -73,7 +73,7 @@
         </svg>
       </div>
       <div class="flex align-center">
-        <div class="center" style="font-size: 24px; max-width: 106px;">
+        <div class="center" style="font-size: 24px; max-width: 106px">
           callback queue
         </div>
         <div class="border p1">
@@ -87,11 +87,11 @@
     <script>
       let w = 0;
       let b1 = (function () {
-        let d1 = document.createElement("div");
-        let d2 = document.createElement("div");
-        let b = document.createElement("button");
+        let d1 = document.createElement('div');
+        let d2 = document.createElement('div');
+        let b = document.createElement('button');
         let timeS = Date.now();
-        b.addEventListener("click", () => {
+        b.addEventListener('click', () => {
           timeS = Date.now();
           d1.innerText = `tart at: ${timeS}`;
           setTimeout(() => {
@@ -99,7 +99,7 @@
             console.log(w++);
           }, 100);
         });
-        b.innerText = "fresh";
+        b.innerText = 'fresh';
         d1.innerText = `start at: ${timeS}`;
         setTimeout(() => {
           d2.innerText = `delay ${Date.now() - timeS}`;
@@ -111,11 +111,11 @@
         return b;
       })();
       let b2 = (function () {
-        let d1 = document.createElement("div");
-        let d2 = document.createElement("div");
-        let b = document.createElement("button");
+        let d1 = document.createElement('div');
+        let d2 = document.createElement('div');
+        let b = document.createElement('button');
         let timeS = Date.now();
-        b.addEventListener("click", () => {
+        b.addEventListener('click', () => {
           timeS = Date.now();
           d1.innerText = `tart at: ${timeS}`;
           setTimeout(() => {
@@ -132,7 +132,7 @@
             }
           });
         });
-        b.innerText = "fresh";
+        b.innerText = 'fresh';
         d1.innerText = `start at: ${timeS}`;
         setTimeout(() => {
           d2.innerText = `delay ${Date.now() - timeS}`;
@@ -153,8 +153,8 @@
         return b;
       })();
       (function (b1, b2) {
-        let b = document.createElement("button");
-        b.addEventListener("click", () => {
+        let b = document.createElement('button');
+        b.addEventListener('click', () => {
           if (Date.now() % 2) {
             b1.click();
             b2.click();
@@ -163,7 +163,7 @@
             b1.click();
           }
         });
-        b.innerText = "click";
+        b.innerText = 'click';
         document.body.appendChild(b);
       })(b1, b2);
     </script>

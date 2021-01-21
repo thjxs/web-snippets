@@ -19,7 +19,7 @@ class Ripple extends HTMLElement {
     states.set(this, state);
   }
   get ripple() {
-    return this.querySelector("[role=ripple]");
+    return this.querySelector('[role=ripple]');
   }
   constructor(props) {
     super(props);
@@ -27,4 +27,4 @@ class Ripple extends HTMLElement {
   }
 }
 
-window.customElements.define("c-ripple", Ripple);
+window.customElements.define('c-ripple', Ripple);

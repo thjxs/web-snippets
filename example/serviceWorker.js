@@ -1,11 +1,11 @@
-const version = "v1";
+const version = 'v1';
 const VERSIONED_ASSET = /.*\.(js|css|png|svg|jpg)$/;
 
-self.addEventListener("install", () => {
+self.addEventListener('install', () => {
   self.skipWaiting();
 });
 
-self.addEventListener("activate", (e) => {
+self.addEventListener('activate', (e) => {
   // e.waitUntil(self.ClientRectList.claim().then(precache))
 });
 
@@ -49,7 +49,7 @@ async function cacheOrFetched(req) {
 
 self.onfetch = (e) => {
   const req = e.request;
-  if (req.method !== "GET") {
+  if (req.method !== 'GET') {
     return;
   }
   const url = new URL(req.url);
@@ -63,9 +63,9 @@ self.onfetch = (e) => {
 async function download(url) {
   const response = await fetch(url);
   const headers = {
-    "Content-Disposition": 'attachment; filename="tmp.png"',
-    "Content-Type": response.headers.get("Content-Type"),
-    "Content-Length": response.headers.get("Content-Length"),
+    'Content-Disposition': 'attachment; filename="tmp.png"',
+    'Content-Type': response.headers.get('Content-Type'),
+    'Content-Length': response.headers.get('Content-Length'),
   };
 
   const responseStream = new Response(response.body, { headers });
