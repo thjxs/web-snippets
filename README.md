@@ -1,4 +1,4 @@
-# css-snippets
+# web-snippets
 
 This stuff is convenient for me
 
