@@ -1,5 +1,9 @@
 const routes = [
   {
+    path: '/pseudo',
+    component: './pages/Pseudo'
+  },
+  {
     path: '/shadow-root',
     component: './pages/ShadowRoot',
   },
