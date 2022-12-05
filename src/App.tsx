@@ -1,21 +1,11 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import routes from './routes';
+import router from './router';
 
 function App() {
   return (
     <Suspense fallback="">
-      <BrowserRouter>
-        <Switch>
-          {routes.map((r) => (
-            <Route
-              key={r.path}
-              path={r.path}
-              component={lazy(() => import(`${r.component}`))}
-            ></Route>
-          ))}
-        </Switch>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </Suspense>
   );
 }
